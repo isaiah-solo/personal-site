@@ -1,0 +1,71 @@
+/**
+ * App Colors
+ */
+$zblue: #05b1d1;
+$zred: #ee0060;
+
+.Nav {
+  background: #202020;
+  display: block;
+  height: 52px;
+  position: fixed;
+  width: 100%;
+}
+
+.NavMenu {
+  margin: 0 auto;
+  padding: 5px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 740px;
+}
+
+.NavMenuItem {
+  color: $zblue;
+  font-size: 16pt;
+  margin: auto;
+  text-decoration: none;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.NavMenuItemActive {
+  @extend .NavMenuItem;
+  color: white;
+}
+
+.NavText {
+  color: white;
+  text-align: center;
+}
+
+.NavLargeText {
+  @extend .NavText;
+  font-size: 24pt;
+}
+
+.NavSmallText {
+  @extend .NavText;
+  font-size: 16pt;
+}
+
+.NavTinyText {
+  @extend .NavText;
+  font-size: 8pt;
+}
+
+@media screen and (max-width: 1000px) {
+  .Nav {
+    box-shadow: none;
+    padding-left: 10px;
+  }
+
+  .NavMenu {
+    margin: 0px;
+  }
+}

@@ -1,0 +1,112 @@
+/**
+ * App Colors
+ */
+$zblue: #05b1d1;
+$zred: #ee0060;
+$zgrey: #757088;
+$zdarkblue: #026a7e;
+
+.Page {
+  display: block;
+  padding: 52px 0px 20px 0px;
+  width: auto;
+}
+
+.PageItem {
+  background: #2c2c2c;
+  border-radius: 2px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 700px;
+}
+
+.PageText {
+  color: white;
+  text-decoration: none;
+}
+
+.PageTitleText {
+  @extend .PageText;
+  font-size: 24pt;
+}
+
+.PageLargeText {
+  @extend .PageText;
+  font-size: 16pt;
+}
+
+.PageSmallText {
+  @extend .PageText;
+  font-size: 12pt;
+}
+
+.PageFadedText {
+  @extend .PageText;
+  color: $zgrey;
+  font-size: 12pt;
+}
+
+.PageLink {
+  @extend .PageText;
+  color: $zblue;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.PageLargeLink {
+  @extend .PageLargeText;
+
+  &:hover {
+    color: $zblue;
+  }
+}
+
+.Carousel {
+  @extend .PageItem;
+  background: none;
+  height: 220px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0px;
+  white-space: nowrap;
+  width: 740px;
+}
+
+.CarouselItem {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  background: white;
+  display: inline-block;
+  height: 200px;
+  margin-right: 10px;
+  padding: 10px;
+  width: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .Page {
+    padding: 57px 0px 0px 0px;
+  }
+
+  .PageItem {
+    border-radius: 0px;
+    box-shadow: none;
+    margin: 0px 5px 5px 5px ;
+    min-width: 0px;
+    width: auto;
+  }
+
+  .Carousel {
+    border-radius: 0px;
+    box-shadow: none;
+    margin: 0px 5px 5px 5px ;
+    min-width: 0px;
+    width: auto;
+  }
+
+  .CarouselItem {
+    border-radius: 0px;
+    margin-right: 5px;
+  }
+}
