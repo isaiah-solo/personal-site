@@ -1,40 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
+  Switch,
   Route,
   NavLink
 } from 'react-router-dom'
+
+import HomePage from './HomePage';
+import ExperiencePage from './ExperiencePage';
+import HaircutsPage from './HaircutsPage';
 
 import '../styles/App.scss';
 import '../styles/Nav.scss';
 import '../styles/Page.scss';
 
-import Home from './Home';
-import Experience from './Experience';
-import Haircuts from './Haircuts';
+const NotFound = (props) => {
 
-const json = require('../data/resume.json');
-
-const MyHome = (props) => {
   return (
-    <Home jsonObj={json} />
+    <div className="PageItem">
+      <div className="PageLargeText">
+        Sorry! What you are looking for cannot be found. Maybe try again soon?
+      </div>
+    </div>
   );
 }
 
-const MyExperience = (props) => {
-  return (
-    <Experience jsonObj={json} />
-  );
-}
+export default class App extends React.Component {
 
-const MyHaircuts = (props) => {
-  return (
-    <Haircuts />
-  );
-}
-
-class App extends Component {
   render() {
+
     return (
       <Router>
         <div className="App">
@@ -47,15 +41,16 @@ class App extends Component {
             </div>
           </div>
           <div className="Page">
-            <Route exact path="/" render={MyHome} />
-            <Route exact path="/experience" render={MyExperience} />
-            <Route exact path="/projects" />
-            <Route exact path="/haircuts" render={MyHaircuts} />
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/experience" component={ExperiencePage} />
+              <Route exact path="/projects" />
+              <Route exact path="/haircuts" component={HaircutsPage} />
+              <Route exact path="*" render={NotFound} />
+            </Switch>
           </div>
         </div>
       </Router>
     );
   }
 }
-
-export default App;

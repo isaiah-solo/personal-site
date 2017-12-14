@@ -15,7 +15,7 @@ $zdarkblue: #026a7e;
 .PageItem {
   background: #2c2c2c;
   border-radius: 2px;
-  margin: 20px auto;
+  margin: 0px auto 20px auto;
   padding: 20px;
   width: 700px;
 }
@@ -25,14 +25,10 @@ $zdarkblue: #026a7e;
   text-decoration: none;
 }
 
-.PageTitleText {
-  @extend .PageText;
-  font-size: 24pt;
-}
-
 .PageLargeText {
   @extend .PageText;
   font-size: 16pt;
+  margin-bottom: 0px;
 }
 
 .PageSmallText {
@@ -44,6 +40,11 @@ $zdarkblue: #026a7e;
   @extend .PageText;
   color: $zgrey;
   font-size: 12pt;
+}
+
+.PageTitleText {
+  @extend .PageLargeText;
+  margin-bottom: 4px;
 }
 
 .PageLink {

@@ -1,31 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import '../styles/App.scss'
 
-class Pill extends Component {
+const Pill = (props) => {
 
-  constructor(props) {
-    super(props);
+  const label = props.skill.label;
+  const link = props.skill.link;
 
-    this.state = {
-      skill: this.props.skill,
-      url: this.props.url
-    }    
-  }
-
-  /**
-   * Render
-   */
-  render() {
-    var skill = this.state.skill;
-    var url = this.state.url;
-
-    return (
-      <a className="Pill" href={url} target="_blank" rel="noopener">
-        {skill}
-      </a>
-    );
-  }
+  return (
+    <a className="Pill" href={link} target="_blank" rel="noopener">
+      {label}
+    </a>
+  );
 }
 
 export default Pill;
+

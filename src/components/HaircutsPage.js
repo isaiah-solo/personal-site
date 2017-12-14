@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 
 import '../styles/Page.scss';
 
-class Haircuts extends Component {
+export default class HaircutsPage extends Component {
 
-  /**
-   * Render
-   */
   render() {
 
     return (
@@ -19,4 +16,3 @@ class Haircuts extends Component {
   }
 }
 
-export default Haircuts;
