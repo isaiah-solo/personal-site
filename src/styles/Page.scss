@@ -20,6 +20,17 @@ $zdarkblue: #026a7e;
   width: 700px;
 }
 
+.PageButton {
+  @extend .PageItem;
+  background: $zred;
+  text-align: center;
+
+  &:hover {
+    background: $zblue;
+    cursor: pointer;
+  }
+}
+
 .PageText {
   color: white;
   text-decoration: none;
@@ -66,8 +77,9 @@ $zdarkblue: #026a7e;
 
 .Carousel {
   @extend .PageItem;
+
   background: none;
-  height: 220px;
+  height: 350px;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0px;
@@ -76,13 +88,14 @@ $zdarkblue: #026a7e;
 }
 
 .CarouselItem {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
   background: white;
   display: inline-block;
-  height: 200px;
+  height: 350px;
   margin-right: 10px;
-  padding: 10px;
-  width: 200px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -93,7 +106,7 @@ $zdarkblue: #026a7e;
   .PageItem {
     border-radius: 0px;
     box-shadow: none;
-    margin: 0px 5px 5px 5px ;
+    margin: 0px 0px 5px 0px ;
     min-width: 0px;
     width: auto;
   }
@@ -101,7 +114,7 @@ $zdarkblue: #026a7e;
   .Carousel {
     border-radius: 0px;
     box-shadow: none;
-    margin: 0px 5px 5px 5px ;
+    margin: 0px 0px 5px 0px ;
     min-width: 0px;
     width: auto;
   }
@@ -109,5 +122,12 @@ $zdarkblue: #026a7e;
   .CarouselItem {
     border-radius: 0px;
     margin-right: 5px;
+  }
+
+  .PageButton {
+    box-shadow: none;
+    margin: 0px 0px 5px 0px;
+    min-width: 0px;
+    width: auto;
   }
 }

@@ -14,12 +14,12 @@ export default class HomePage extends React.Component {
 
   componentWillMount() {
 
-    Firebase.bindToState('profile', {
+    Firebase.zayz.bindToState('profile', {
       context: this,
       state: 'profile'
     });
 
-    Firebase.bindToState('skills', {
+    Firebase.zayz.bindToState('skills', {
       context: this,
       state: 'skills',
       asArray: true

@@ -62,10 +62,12 @@ $zred: #ee0060;
 @media screen and (max-width: 1000px) {
   .Nav {
     box-shadow: none;
+    height: 52px;
     padding-left: 10px;
   }
 
   .NavMenu {
     margin: 0px;
+    width: 100%;
   }
 }

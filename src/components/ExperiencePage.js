@@ -78,12 +78,12 @@ export default class ExperiencePage extends React.Component {
 
   componentWillMount() {
 
-    Firebase.bindToState('experience', {
+    Firebase.zayz.bindToState('experience', {
       context: this,
       state: 'experience',
     });
 
-    Firebase.bindToState('skills', {
+    Firebase.zayz.bindToState('skills', {
       context: this,
       state: 'skills',
     });
