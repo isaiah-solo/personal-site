@@ -6,6 +6,48 @@ $zred: #ee0060;
 $zgrey: #757088;
 $zdarkblue: #026a7e;
 
+.CarouselPageItem {
+  position: relative;
+  margin: 0px auto 20px auto;
+  width: 740px;  
+}
+
+.CarouselArrows {
+  position: absolute;
+  top: calc(50% - 30px);
+  width: 740px;
+}
+
+.LeftArrow {
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid $zred;
+  border-top: 30px solid transparent;
+  cursor: pointer;
+  height: 0px;
+  left: 10px;
+  position: absolute;
+  width: 0px;
+
+  &:hover {
+    border-right: 30px solid $zblue;
+  }  
+}
+
+.RightArrow {
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid $zred;
+  border-top: 30px solid transparent;
+  cursor: pointer;
+  height: 0px;
+  position: absolute;
+  right: 10px;
+  width: 0px;
+
+  &:hover {
+    border-left: 30px solid $zblue;
+  }  
+}
+
 .Page {
   display: block;
   padding: 52px 0px 20px 0px;
@@ -77,10 +119,9 @@ $zdarkblue: #026a7e;
 
 .Carousel {
   @extend .PageItem;
-
   background: none;
   height: 350px;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   padding: 0px;
   white-space: nowrap;
@@ -92,10 +133,31 @@ $zdarkblue: #026a7e;
   display: inline-block;
   height: 350px;
   margin-right: 10px;
+  position: relative;
+  text-align: center;
+  width: 280px;
+
+  &:hover {
+    cursor: pointer;
+    -webkit-filter: blur(2px); /* Safari */
+    filter: blur(2px);
+  }
 
   &:last-child {
     margin-right: 0px;
   }
+}
+
+.CarouselItemImage {
+  height: 100%;
+  width: 100%;
+}
+
+.CarouselItemText {
+  color: black;
+  font-size: 12pt;
+  position: absolute;
+  width: 100%;
 }
 
 @media screen and (max-width: 1000px) {

@@ -97,10 +97,6 @@ export default class ExperiencePage extends React.Component {
     return (
       <div>
         <ExperienceList experiences={experiences} skills={skills} />
-        <div className="PageItem">
-          <h1 className="PageTitleText">Misc. Skills</h1>
-          <PillGroup skills={skills} />
-        </div>
       </div>
     );
   }

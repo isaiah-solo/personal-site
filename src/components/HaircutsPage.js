@@ -19,14 +19,22 @@ export default class HaircutsPage extends Component {
     });
   }
 
+  mouseEnterCarousel = () => {
+    console.log('test');
+  }
+
+  scroll(e) {
+    window.scrollBy(100, 0)
+  }
+
   render() {
 
     return (
       <div>
         <div className='PageItem'>
-          <div className='PageTitleText'> Haircuts </div>
+          <div className='PageTitleText'> Take a look at some of my haircuts below! </div>
         </div>
-        <Carousel images={this.state.images} />
+        <Carousel images={this.state.images} onMouseEnter={this.mouseEnterCarousel} />
         <div className='PageButton'>
           <div className='PageTitleText'> Schedule a haircut </div>
         </div>
