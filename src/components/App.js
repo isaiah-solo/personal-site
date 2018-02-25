@@ -8,7 +8,9 @@ import {
 
 import HomePage from './HomePage';
 import ExperiencePage from './ExperiencePage';
+import ProjectsPage from './ProjectsPage';
 import HaircutsPage from './HaircutsPage';
+import Firebase from './Firebase';
 
 import '../styles/App.scss';
 import '../styles/Nav.scss';
@@ -27,6 +29,19 @@ const NotFound = (props) => {
 
 export default class App extends React.Component {
 
+  componentWillMount() {
+
+    Firebase.zayz.fetch('site/visitor_count', {
+      context: this,
+      state: 'site',
+      then(count){
+        Firebase.zayz.post('site', {
+          data: {visitor_count: ++count}
+        });
+      }
+    });
+  }
+
   render() {
 
     return (
@@ -44,7 +59,7 @@ export default class App extends React.Component {
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/experience" component={ExperiencePage} />
-              <Route exact path="/projects" />
+              <Route exact path="/projects" component={ProjectsPage} />
               <Route exact path="/haircuts" component={HaircutsPage} />
               <Route exact path="*" render={NotFound} />
             </Switch>

@@ -3,7 +3,11 @@ import React from 'react';
 import '../styles/App.scss'
 import '../styles/Page.scss';
 
-class ImageList extends React.Component {
+export default class Carousel extends React.Component {
+
+  state = {
+    arrowsShow: false
+  }
 
   onComponentUnmount() {
     clearInterval(this.carouselScrollInterval);
@@ -26,11 +30,43 @@ class ImageList extends React.Component {
         this.scrollCounter++;
       }
     }, 3000);
+
+    this.state.scrollLeft = () => {
+      carousel.scrollBy({
+        'left': -290,
+        'top': 0,
+        'behavior': 'smooth'
+      });
+    }
+
+    this.state.scrollRight = () => {
+      carousel.scrollBy({
+        'left': 290,
+        'top': 0,
+        'behavior': 'smooth'
+      });
+    }
   }
 
   stopAutoScroll = () => {
     this.children = 0;
     clearInterval(this.carouselScrollInterval);
+  }
+
+  showArrows = () => {
+    this.setState({arrowsShow: true});
+  }
+
+  hideArrows = () => {
+    this.setState({arrowsShow: false});
+  }
+
+  scrollCarouselLeft = () => {
+    this.state.scrollLeft();
+  }
+
+  scrollCarouselRight = () => {
+    this.state.scrollRight();
   }
 
   render() {
@@ -47,42 +83,13 @@ class ImageList extends React.Component {
     }
 
     return (
-      <div className='Carousel' onMouseEnter={this.stopAutoScroll} ref={this.startAutoScroll}> {imageList} </div>
-    );
-  }
-}
-
-export default class Carousel extends React.Component {
-
-  state = {
-    arrowsShow: false
-  }
-
-  showArrows = () => {
-    this.setState({arrowsShow: true});
-  }
-
-  hideArrows = () => {
-    this.setState({arrowsShow: false});
-  }
-
-  scrollCarouselLeft = () => {
-    alert('Test Left');
-  }
-
-  scrollCarouselRight = () => {
-    alert('Test Right');
-  }
-
-  render() {
-    return (
       <div className='CarouselPageItem' onMouseEnter={this.showArrows} onMouseLeave={this.hideArrows}>
-        <ImageList images={this.props.images} />
+        <div className='Carousel' onMouseEnter={this.stopAutoScroll} ref={this.startAutoScroll}> {imageList} </div>
         {
           this.state.arrowsShow ?
           <div className='CarouselArrows'>
-            <div className='LeftArrow' onClick={this.scrollCarouselLeft} />
-            <div className='RightArrow' onClick={this.scrollCarouselRight} />
+            <div className='LeftArrow' onClick={this.scrollCarouselLeft.bind(this)} />
+            <div className='RightArrow' onClick={this.scrollCarouselRight.bind(this)} />
           </div>
           : null
         }

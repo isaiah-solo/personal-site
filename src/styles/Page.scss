@@ -6,6 +6,33 @@ $zred: #ee0060;
 $zgrey: #757088;
 $zdarkblue: #026a7e;
 
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-gap: 1px;
+  grid-auto-rows: minmax(calc(707px / 16), auto);
+}
+
+.PixelEmpty {
+  background-color: transparent;
+  height: calc(707px / 16);
+}
+
+.PixelBackground {
+  background-color: #ff0392;
+  height: calc(707px / 16);
+}
+
+.PixelClothes {
+  background-color: #3beff5;
+  height: calc(707px / 16);
+}
+
+.PixelSkin {
+  background-color: #f7e4bc;
+  height: calc(707px / 16);
+}
+
 .CarouselPageItem {
   position: relative;
   margin: 0px auto 20px auto;
@@ -139,8 +166,8 @@ $zdarkblue: #026a7e;
 
   &:hover {
     cursor: pointer;
-    -webkit-filter: blur(2px); /* Safari */
-    filter: blur(2px);
+    //-webkit-filter: blur(2px); /* Safari */
+    //filter: blur(2px);
   }
 
   &:last-child {
