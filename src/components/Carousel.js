@@ -1,7 +1,7 @@
 import React from 'react';
 
-import '../styles/App.scss'
-import '../styles/Page.scss';
+import '../styles/App.css'
+import '../styles/Carousel.css';
 
 export default class Carousel extends React.Component {
 
@@ -31,7 +31,7 @@ export default class Carousel extends React.Component {
       }
     }, 3000);
 
-    this.state.scrollLeft = () => {
+    this.scrollLeft = () => {
       carousel.scrollBy({
         'left': -290,
         'top': 0,
@@ -39,7 +39,7 @@ export default class Carousel extends React.Component {
       });
     }
 
-    this.state.scrollRight = () => {
+    this.scrollRight = () => {
       carousel.scrollBy({
         'left': 290,
         'top': 0,
@@ -61,14 +61,6 @@ export default class Carousel extends React.Component {
     this.setState({arrowsShow: false});
   }
 
-  scrollCarouselLeft = () => {
-    this.state.scrollLeft();
-  }
-
-  scrollCarouselRight = () => {
-    this.state.scrollRight();
-  }
-
   render() {
     const images = this.props.images;
 
@@ -88,8 +80,8 @@ export default class Carousel extends React.Component {
         {
           this.state.arrowsShow ?
           <div className='CarouselArrows'>
-            <div className='LeftArrow' onClick={this.scrollCarouselLeft.bind(this)} />
-            <div className='RightArrow' onClick={this.scrollCarouselRight.bind(this)} />
+            <div className='LeftArrow' onClick={this.scrollLeft} />
+            <div className='RightArrow' onClick={this.scrollRight} />
           </div>
           : null
         }

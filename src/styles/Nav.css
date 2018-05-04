@@ -1,17 +1,11 @@
-/**
- * App Colors
- */
-$zblue: #05b1d1;
-$zred: #ee0060;
-
 .Nav {
   background: #202020;
   display: block;
   height: 52px;
   position: fixed;
   width: 100%;
+  z-index: 1;
 }
-
 .NavMenu {
   margin: 0 auto;
   padding: 5px;
@@ -22,50 +16,37 @@ $zred: #ee0060;
   transform: translateY(-50%);
   width: 740px;
 }
-
-.NavMenuItem {
-  color: $zblue;
+.NavMenuItem, .NavMenuItemActive {
+  color: #05b1d1;
   font-size: 16pt;
   margin: auto;
   text-decoration: none;
-
-  &:hover {
-    color: white;
-  }
 }
-
-.NavMenuItemActive {
-  @extend .NavMenuItem;
+.NavMenuItem:hover, .NavMenuItemActive:hover {
   color: white;
 }
-
-.NavText {
+.NavMenuItemActive {
+  color: white;
+}
+.NavText, .NavLargeText, .NavSmallText, .NavTinyText {
   color: white;
   text-align: center;
 }
-
 .NavLargeText {
-  @extend .NavText;
   font-size: 24pt;
 }
-
 .NavSmallText {
-  @extend .NavText;
   font-size: 16pt;
 }
-
 .NavTinyText {
-  @extend .NavText;
   font-size: 8pt;
 }
-
 @media screen and (max-width: 1000px) {
   .Nav {
     box-shadow: none;
     height: 52px;
     padding-left: 10px;
   }
-
   .NavMenu {
     margin: 0px;
     width: 100%;
