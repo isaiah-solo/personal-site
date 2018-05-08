@@ -34,12 +34,18 @@ export default class AboutPage extends React.Component {
 
   componentDidMount() {
     fetch('/api/site')
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) {
+            throw Error(res.statusText);
+          }
+          return res.json();
+        })
         .then(site => this.setState({
           profile: site.profile,
           experience: site.experience,
           skills: site.skills,
-        }));
+        }))
+        .catch((error) => console.log(error));
   }
 
   popDetails(details = []) {
