@@ -33,7 +33,7 @@ export default class AboutPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/site')
+    fetch('/api/site', { headers: { 'Content-Type': 'application/json' } })
         .then(res => {
           if (!res.ok) {
             throw Error(res.statusText);
