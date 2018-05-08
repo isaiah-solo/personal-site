@@ -1,6 +1,6 @@
 {
   "name": "zayz.me",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "proxy": "http://localhost:8080/",
   "private": true,
   "dependencies": {
