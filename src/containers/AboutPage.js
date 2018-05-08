@@ -33,7 +33,7 @@ export default class AboutPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://isaiahcs.com/api/site')
+    fetch('/api/site')
         .then(res => res.json())
         .then(site => this.setState({
           profile: site.profile,
