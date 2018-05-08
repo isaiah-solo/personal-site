@@ -1,18 +1,12 @@
 import React from 'react';
 
-import '../styles/App.scss'
+import '../styles/App.css'
 
-const Pill = (props) => {
-
-  const label = props.skill.label;
-  const link = props.skill.link;
-
-  return (
-    <a className="Pill" href={link} target="_blank" rel="noopener">
-      {label}
-    </a>
-  );
-}
+const Pill = props => (
+  <a className="Pill" href={props.skill.link} target="_blank" rel="noopener">
+    {props.skill.label}
+  </a>
+);
 
 export default Pill;
 

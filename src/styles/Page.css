@@ -1,0 +1,93 @@
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-gap: 1px;
+  grid-auto-rows: minmax(calc(707px / 16), auto);
+}
+.PixelEmpty {
+  background-color: transparent;
+  height: calc(707px / 16);
+}
+.PixelBackground {
+  background-color: #ff0392;
+  height: calc(707px / 16);
+}
+.PixelClothes {
+  background-color: #3beff5;
+  height: calc(707px / 16);
+}
+.PixelSkin {
+  background-color: #f7e4bc;
+  height: calc(707px / 16);
+}
+.Page {
+  display: block;
+  padding: 52px 0px 20px 0px;
+  width: auto;
+}
+.PageItem, .PageButton {
+  background: #2c2c2c;
+  border-radius: 2px;
+  margin: 0px auto 20px auto;
+  padding: 20px;
+  width: 700px;
+}
+.PageButton {
+  background: #ee0060;
+  text-align: center;
+}
+.PageButton:hover {
+  background: #05b1d1;
+  cursor: pointer;
+}
+.PageText, .PageLargeText, .PageGiantText, .PageTitleText, .PageLargeLink, .PageSmallText, .PageFadedText, .PageLink {
+  color: white;
+  text-decoration: none;
+}
+.PageLargeText, .PageTitleText, .PageLargeLink {
+  font-size: 16pt;
+  margin-bottom: 0px;
+}
+.PageGiantText {
+  font-size: 24pt;
+  margin-bottom: 0px;
+}
+.PageSmallText {
+  font-size: 12pt;
+  margin-bottom: 0px;
+}
+.PageFadedText {
+  color: #b2b2b2;
+  font-size: 12pt;
+  margin-top: 4px;
+}
+.PageTitleText {
+}
+.PageLink {
+  color: #05b1d1;
+}
+.PageLink:hover {
+  color: white;
+}
+.PageLargeLink:hover {
+  color: #05b1d1;
+}
+@media screen and (max-width: 1000px) {
+  .Page {
+    padding: 57px 0px 0px 0px;
+  }
+  .PageItem, .PageButton {
+    border-radius: 0px;
+    box-shadow: none;
+    margin: 0px 0px 5px 0px;
+    min-width: 0px;
+    padding: 15px;
+    width: auto;
+  }
+  .PageButton {
+    box-shadow: none;
+    margin: 0px 0px 5px 0px;
+    min-width: 0px;
+    width: auto;
+  }
+}

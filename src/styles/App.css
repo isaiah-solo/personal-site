@@ -1,0 +1,26 @@
+.Pill {
+  background: #ee0060;
+  border-radius: 15px;
+  color: white;
+  display: inline-block;
+  font-size: 12pt;
+  margin: 5px 10px 5px 0px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  width: auto;
+}
+
+.Pill:hover {
+  background: #05b1d1;
+}
+
+.Icon {
+  color: white;
+  height: '20px';
+  width: '20px';
+  text-shadow: '0 1px 0 rgba(0, 0, 0, 0.1)';
+}
+
+.Icon:hover {
+  color: #05b1d1;
+}
