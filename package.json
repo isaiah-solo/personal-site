@@ -1,7 +1,7 @@
 {
   "name": "zayz.me",
   "version": "0.3.0",
-  "proxy": "http://localhost:8080/",
+  "proxy": "http://localhost:8081/",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.2",
@@ -22,12 +22,14 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
+    "express": "^4.16.3",
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "0.11.2",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "moment": "^2.18.1",
+    "mongodb": "^3.0.8",
     "npm": "^6.0.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
