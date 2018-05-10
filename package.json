@@ -1,7 +1,7 @@
 {
   "name": "zayz.me",
   "version": "0.3.0",
-  "proxy": "http://localhost:8081/",
+  "proxy": "http://isaiahcs.com/",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.2",
