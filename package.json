@@ -1,8 +1,6 @@
 {
   "name": "zayz.me",
   "version": "0.3.0",
-  "proxy": "http://localhost:8081/",
-  "private": true,
   "dependencies": {
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",
