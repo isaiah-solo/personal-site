@@ -26,7 +26,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "moment": "^2.18.1",
+    "moment": "^2.22.1",
     "mongodb": "^3.0.8",
     "npm": "^6.0.0",
     "object-assign": "4.1.1",
