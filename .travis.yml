@@ -18,7 +18,7 @@ script:
 - npm test
 deploy:
   provider: script
-  script: bash scripts/docker_deploy.sh
+  script: sudo bash scripts/docker_deploy.sh
   on:
     branch:
     - master
