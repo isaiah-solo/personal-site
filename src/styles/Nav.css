@@ -18,7 +18,7 @@
 }
 .NavMenuItem, .NavMenuItemActive {
   color: #05b1d1;
-  font-size: 16pt;
+  font-size: 14pt;
   margin: auto;
   text-decoration: none;
 }
@@ -27,19 +27,6 @@
 }
 .NavMenuItemActive {
   color: white;
-}
-.NavText, .NavLargeText, .NavSmallText, .NavTinyText {
-  color: white;
-  text-align: center;
-}
-.NavLargeText {
-  font-size: 24pt;
-}
-.NavSmallText {
-  font-size: 16pt;
-}
-.NavTinyText {
-  font-size: 8pt;
 }
 @media screen and (max-width: 1000px) {
   .Nav {

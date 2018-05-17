@@ -45,20 +45,20 @@
   text-decoration: none;
 }
 .PageLargeText, .PageTitleText, .PageLargeLink {
-  font-size: 16pt;
+  font-size: 12pt;
   margin-bottom: 0px;
 }
 .PageGiantText {
-  font-size: 24pt;
+  font-size: 16pt;
   margin-bottom: 0px;
 }
 .PageSmallText {
-  font-size: 12pt;
+  font-size: 10pt;
   margin-bottom: 0px;
 }
 .PageFadedText {
   color: #b2b2b2;
-  font-size: 12pt;
+  font-size: 10pt;
   margin-top: 4px;
 }
 .PageTitleText {
