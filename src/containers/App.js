@@ -9,7 +9,6 @@ import {
 import BlogPage from '../containers/BlogPage';
 import AboutPage from '../containers/AboutPage';
 
-import '../styles/App.css';
 import '../styles/Nav.css';
 import '../styles/Page.css';
 
