@@ -25,7 +25,6 @@ const FontAwesomeWrapper = props => {
 };
 
 export default class AboutPage extends React.Component {
-
   state = {
     profile: {},
     experience: [],
@@ -49,7 +48,7 @@ export default class AboutPage extends React.Component {
   }
 
   popDetails(details = []) {
-    const detailList = details.map((detail, index) => <p className="PageSmallText" key={ index }> { detail } </p>);
+    const detailList = details.map((detail, index) => <p className='PageSmallText' key={ index }> { detail } </p>);
 
     return (
       <div> { detailList } </div>
@@ -57,10 +56,18 @@ export default class AboutPage extends React.Component {
   }
 
   popExperience(experience, skills, counter) {
-    const startDate = moment(experience.startDate).format('MMM YYYY');
-    const endDate = experience.endDate !== ''
-        ? moment(experience.endDate).format('MMM YYYY')
-        : 'Present';
+    const startDate = moment(experience.startDate);
+    const endDate = moment(experience.endDate || new Date());
+
+    const yearsAgo = endDate.diff(startDate, 'years');
+    const monthsAgo = (1 + endDate.diff(startDate, 'months')) % 12;
+
+    const yearsAgoString = yearsAgo > 0 ? yearsAgo.toString() + ' year' + (yearsAgo > 1 ? 's' : '') : '';
+    const monthsAgoString = monthsAgo > 0 ? monthsAgo.toString() + ' month' + (monthsAgo > 1 ? 's' : '') : '';
+
+    const agoString = yearsAgoString + (yearsAgo > 0 && monthsAgo > 0 ? ' ' : '') + monthsAgoString;
+    const startDateString = startDate.format('MMM YYYY');
+    const endDateString = experience.endDate ? endDate.format('MMM YYYY') : 'Present';
 
     const detailList = this.popDetails(experience.details);
     const pillDivs = skills.map((skill, index) =>
@@ -74,7 +81,7 @@ export default class AboutPage extends React.Component {
             { experience.company }
           </a>
         </h1>
-        <div className="PageFadedText"> { startDate } - { endDate } </div>
+        <div className="PageFadedText"> { agoString.length > 0 ? agoString + ', ' : '' } { startDateString } - { endDateString } </div>
         { detailList }
         <Group items={ pillDivs } />
       </div>
