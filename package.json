@@ -1,6 +1,6 @@
 {
   "name": "zayz.me",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "proxy": "http://localhost:8081/",
   "dependencies": {
     "autoprefixer": "7.1.2",
