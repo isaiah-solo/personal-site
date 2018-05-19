@@ -1,24 +1,6 @@
-.Nav {
-  background: #202020;
-  display: block;
-  height: 52px;
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-}
-.NavMenu {
-  margin: 0 auto;
-  padding: 5px;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 740px;
-}
 .NavMenuItem, .NavMenuItemActive {
   color: #05b1d1;
-  font-size: 16pt;
+  font-size: 14pt;
   margin: auto;
   text-decoration: none;
 }
@@ -27,28 +9,4 @@
 }
 .NavMenuItemActive {
   color: white;
-}
-.NavText, .NavLargeText, .NavSmallText, .NavTinyText {
-  color: white;
-  text-align: center;
-}
-.NavLargeText {
-  font-size: 24pt;
-}
-.NavSmallText {
-  font-size: 16pt;
-}
-.NavTinyText {
-  font-size: 8pt;
-}
-@media screen and (max-width: 1000px) {
-  .Nav {
-    box-shadow: none;
-    height: 52px;
-    padding-left: 10px;
-  }
-  .NavMenu {
-    margin: 0px;
-    width: 100%;
-  }
 }

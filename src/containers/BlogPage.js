@@ -1,8 +1,6 @@
 import React from 'react';
 
-import '../styles/Page.css';
-
-export default class HomePage extends React.Component {
+export default class BlogPage extends React.Component {
 
   state = {
   }
