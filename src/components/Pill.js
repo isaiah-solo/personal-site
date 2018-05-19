@@ -18,8 +18,8 @@ const PillDiv = styled.a`
 `;
 
 const Pill = props => (
-  <PillDiv href={props.skill.link} target="_blank" rel="noopener">
-    {props.skill.label}
+  <PillDiv href={ props.skill.link } target="_blank" rel="noopener">
+    { props.skill.label }
   </PillDiv>
 );
 

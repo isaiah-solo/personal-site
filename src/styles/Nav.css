@@ -1,21 +1,3 @@
-.Nav {
-  background: #202020;
-  display: block;
-  height: 52px;
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-}
-.NavMenu {
-  margin: 0 auto;
-  padding: 5px;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 740px;
-}
 .NavMenuItem, .NavMenuItemActive {
   color: #05b1d1;
   font-size: 14pt;
@@ -27,15 +9,4 @@
 }
 .NavMenuItemActive {
   color: white;
-}
-@media screen and (max-width: 1000px) {
-  .Nav {
-    box-shadow: none;
-    height: 52px;
-    padding-left: 10px;
-  }
-  .NavMenu {
-    margin: 0px;
-    width: 100%;
-  }
 }
