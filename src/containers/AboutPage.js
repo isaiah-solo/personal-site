@@ -76,7 +76,7 @@ export default class AboutPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/api/site', { headers: { 'Content-Type': 'application/json' } })
+    fetch('/api/site', { headers: { 'Content-Type': 'application/json' } })
         .then(res => {
           if (!res.ok) {
             throw Error(res.statusText);
