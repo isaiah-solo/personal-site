@@ -59,7 +59,6 @@ const PageDiv = styled.div`
 export default class App extends React.Component {
   render() {
     return (
-      <Router>
         <div>
           <NavDiv>
             <NavMenuDiv>
@@ -75,7 +74,6 @@ export default class App extends React.Component {
             </Switch>
           </PageDiv>
         </div>
-      </Router>
     );
   }
 }
