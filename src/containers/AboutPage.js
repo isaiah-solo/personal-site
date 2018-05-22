@@ -149,7 +149,7 @@ export default class AboutPage extends React.Component {
         { profile &&
           <PageItemDiv>
             <PageLargeText>
-              { profile.name + ' ' } <TypingText toType={ profile.attributes || [] } loop={ true } />
+              { profile.name + ' ' } <TypingText toType={ profile.attributes } loop={ true } />
             </PageLargeText>
             <PageLargeText> { profile.position } </PageLargeText>
             <PageLargeText> { profile.location } </PageLargeText>

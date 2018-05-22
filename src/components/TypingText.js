@@ -1,4 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const CursorChar = styled.span`
+  background-color: #05b1d1;
+  color: #05b1d1;
+`;
+
+const Cursor = () => (
+  <CursorChar>_</CursorChar>
+);
 
 export default class TypeText extends React.Component {
   state = {
@@ -16,7 +26,7 @@ export default class TypeText extends React.Component {
         this.setState({ text: newText }, () => {
           resolve(newText);
         });
-      }, 40);
+      }, this.props.typeSpeed || 40);
     });
   }
 
@@ -36,7 +46,7 @@ export default class TypeText extends React.Component {
           setTimeout(() => {
             isBackspacing = true;
             this.updateLetter(backspacedBase).then(next);
-          }, isBackspacing ? 0 : 1000);
+          }, isBackspacing ? 0 : (this.props.pauseTime || 1000));
         }
 
         else {
@@ -49,7 +59,7 @@ export default class TypeText extends React.Component {
   }
 
   typeSentences = () => {
-    const phrases = this.props.toType;
+    const phrases = this.props.toType || [];
     const loop = this.props.loop;
 
     let current = 0;
@@ -71,7 +81,7 @@ export default class TypeText extends React.Component {
   }
 
   render = () => {
-    return <span> { this.state.text + '_' } </span>;
+    return <span> { this.state.text }<Cursor /> </span>;
   }
 }
 
