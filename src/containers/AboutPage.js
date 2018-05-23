@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Pill from '../components/Pill';
 import Icon from '../components/Icon';
 import Group from '../components/Group';
+import TypingText from '../components/TypingText';
 
 import { dateToString, dateLengthToString } from '../utils/DateUtil';
 
@@ -63,19 +64,17 @@ const FontAwesomeWrapper = props => {
     );
   }
 
-  return (
-    <Group items={ iconDivs } />
-  );
+  return <Group items={ iconDivs } />;
 };
 
 export default class AboutPage extends React.Component {
   state = {
     profile: {},
     experience: [],
-    skills: []
+    skills: [],
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     fetch('/api/site', { headers: { 'Content-Type': 'application/json' } })
         .then(res => {
           if (!res.ok) {
@@ -91,15 +90,13 @@ export default class AboutPage extends React.Component {
         .catch((error) => console.log(error));
   }
 
-  popDetails(details = []) {
+  popDetails = (details = []) => {
     const detailList = details.map((detail, index) => <PageSmallText key={ index }> { detail } </PageSmallText>);
 
-    return (
-      <div> { detailList } </div>
-    );
+    return <div> { detailList } </div>;
   }
 
-  popExperience(experience, skills, counter) {
+  popExperience = (experience, skills, counter) => {
     const dateLengthString = dateLengthToString(experience.startDate, experience.endDate);
     const startDateString = dateToString(experience.startDate);
     const endDateString = experience.endDate ? dateToString(experience.endDate) : 'Present';
@@ -123,7 +120,7 @@ export default class AboutPage extends React.Component {
     );    
   }
 
-  popExperienceList(experiences, skills) {
+  popExperienceList = (experiences, skills) => {
     const experienceList = [];
 
     let counter = 0;
@@ -137,12 +134,10 @@ export default class AboutPage extends React.Component {
       experienceList.push(this.popExperience(experience, filteredSkills, counter++));
     }
 
-    return (
-      <div> { experienceList } </div>
-    );
+    return <div> { experienceList } </div>;
   }
 
-  render() {
+  render = () => {
     const profile = this.state.profile;
     const experiences = this.state.experience;
     const skills = this.state.skills;
@@ -151,12 +146,16 @@ export default class AboutPage extends React.Component {
 
     return (
       <div>
-        <PageItemDiv>
-          <PageLargeText> { profile.name } </PageLargeText>
-          <PageLargeText> { profile.position } </PageLargeText>
-          <PageLargeText> { profile.location } </PageLargeText>
-          <FontAwesomeWrapper icons={ profile.icons || [] } />
-        </PageItemDiv>
+        { profile &&
+          <PageItemDiv>
+            <PageLargeText>
+              { profile.name + ' ' } <TypingText toType={ profile.attributes } loop={ true } />
+            </PageLargeText>
+            <PageLargeText> { profile.position } </PageLargeText>
+            <PageLargeText> { profile.location } </PageLargeText>
+            <FontAwesomeWrapper icons={ profile.icons || [] } />
+          </PageItemDiv>
+        }
         {experienceList}
       </div>
     );
