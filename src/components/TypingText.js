@@ -46,7 +46,7 @@ export default class TypeText extends React.Component {
           setTimeout(() => {
             isBackspacing = true;
             this.updateLetter(backspacedBase).then(next);
-          }, isBackspacing ? 0 : (this.props.pauseTime || 1000));
+          }, isBackspacing ? 0 : (this.props.pauseTime || 1200));
         }
 
         else {
