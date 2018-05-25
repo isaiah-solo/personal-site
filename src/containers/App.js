@@ -52,7 +52,7 @@ const PageDiv = styled.div`
   width: auto;
 
   @media screen and (max-width: 1000px) {
-    padding: 57px 0px 0px 0px;
+    padding: 52px 0px 0px 0px;
   }
 `;
 
