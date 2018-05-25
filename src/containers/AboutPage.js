@@ -150,12 +150,13 @@ export default class AboutPage extends React.Component {
       {"name": "Node.js", "one": 2, "amt": 3},
       {"name": "Golang", "one": 1, "amt": 1},
     ];
+/*
     const frontendData = [
       {"name": "JavaScript", "one": 3, "amt": 3},
       {"name": "React", "one": 3, "amt": 3},
       {"name": "Golang", "one": 1, "amt": 1},
     ];
-
+*/
     return (
       <div>
         { profile && Object.keys(profile).length > 0 &&
