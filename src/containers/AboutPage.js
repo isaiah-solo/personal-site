@@ -1,4 +1,5 @@
 import React from 'react';
+import { BarChart, Bar, XAxis } from 'recharts';
 import styled from 'styled-components';
 
 import Pill from '../components/Pill';
@@ -143,10 +144,22 @@ export default class AboutPage extends React.Component {
     const skills = this.state.skills;
 
     const experienceList = this.popExperienceList(experiences, skills);
-
+    const backendData = [
+      {"name": "Python", "one": 3, "amt": 3},
+      {"name": "PHP", "one": 3, "amt": 3},
+      {"name": "Node.js", "one": 2, "amt": 3},
+      {"name": "Golang", "one": 1, "amt": 1},
+    ];
+/*
+    const frontendData = [
+      {"name": "JavaScript", "one": 3, "amt": 3},
+      {"name": "React", "one": 3, "amt": 3},
+      {"name": "Golang", "one": 1, "amt": 1},
+    ];
+*/
     return (
       <div>
-        { profile &&
+        { profile && Object.keys(profile).length > 0 &&
           <PageItemDiv>
             <PageLargeText> { profile.name } </PageLargeText>
             <PageLargeText>
@@ -154,6 +167,15 @@ export default class AboutPage extends React.Component {
             </PageLargeText>
             <PageLargeText> { profile.location } </PageLargeText>
             <FontAwesomeWrapper icons={ profile.icons || [] } />
+          </PageItemDiv>
+        }
+        { profile && Object.keys(profile).length > 0 &&
+          <PageItemDiv>
+            <PageLargeText> Backend Experience </PageLargeText>
+            <BarChart width={320} height={100} style={{marginTop: "16px"}} data={ backendData }>
+              <XAxis dataKey="name" stroke="white" />
+              <Bar dataKey="one" fill="#05b1d1" />
+            </BarChart>
           </PageItemDiv>
         }
         {experienceList}
