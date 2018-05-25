@@ -146,7 +146,7 @@ export default class AboutPage extends React.Component {
 
     return (
       <div>
-        { profile &&
+        { profile && Object.keys(profile).length > 0 &&
           <PageItemDiv>
             <PageLargeText> { profile.name } </PageLargeText>
             <PageLargeText>

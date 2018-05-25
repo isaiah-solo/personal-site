@@ -15,18 +15,31 @@ export default class TypeText extends React.Component {
     text: "",
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
-    if (this.props.toType === prevProps.toType) return;
+  constructor(props) {
+    super(props);
+
+    this.timeouts = [];
+  }
+
+  componentDidMount = () => {
     this.typeSentences();
+  }
+
+  componentWillUnmount = () => {
+    for (let timeout of this.timeouts) {
+      clearTimeout(timeout);
+    }
   }
 
   updateLetter = newText => {
     return new Promise(resolve => {
-      setTimeout(() => {
-        this.setState({ text: newText }, () => {
-          resolve(newText);
-        });
-      }, this.props.typeSpeed || 40);
+      this.timeouts.push(
+        setTimeout(() => {
+          this.setState({ text: newText }, () => {
+            resolve(newText);
+          });
+        }, this.props.typeSpeed || 40)
+      );
     });
   }
 
@@ -43,10 +56,12 @@ export default class TypeText extends React.Component {
 
         else if (base.length > 0) {
           const backspacedBase = base.slice(0, base.length - 1);
-          setTimeout(() => {
-            isBackspacing = true;
-            this.updateLetter(backspacedBase).then(next);
-          }, isBackspacing ? 0 : (this.props.pauseTime || 1200));
+          this.timeouts.push(
+            setTimeout(() => {
+              isBackspacing = true;
+              this.updateLetter(backspacedBase).then(next);
+            }, isBackspacing ? 0 : (this.props.pauseTime || 1200))
+          );
         }
 
         else {
@@ -73,7 +88,7 @@ export default class TypeText extends React.Component {
       }
 
       this.typeSentence(phrases[current++]).then(() => {
-        setTimeout(next, 100)
+        this.timeouts.push(setTimeout(next, 100))
       });
     };
 
