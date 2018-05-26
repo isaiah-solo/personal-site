@@ -10,7 +10,7 @@ const Cursor = () => (
   <CursorChar>_</CursorChar>
 );
 
-export default class TypeText extends React.Component {
+export default class TextTyping extends React.Component {
   state = {
     text: "",
   }
