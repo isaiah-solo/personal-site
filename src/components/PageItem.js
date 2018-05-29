@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
 const PageItemDiv = styled.div`
@@ -19,19 +18,7 @@ const PageItemDiv = styled.div`
   }
 `;
 
-const PageLargeTextDiv = styled.div`
-  color: white;
-  font-size: 12pt;
-  margin-bottom: 0px;
-  text-decoration: none;
-`;
+const PageItem = props => <PageItemDiv> { props.children } </PageItemDiv>;
 
-const NotFoundPage = props => (
-  <PageItemDiv>
-    <PageLargeTextDiv>
-      Sorry! What you are looking for cannot be found. Maybe try again soon?
-    </PageLargeTextDiv>
-  </PageItemDiv>
-);
+export default PageItem;
 
-export default NotFoundPage;

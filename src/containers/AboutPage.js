@@ -1,58 +1,18 @@
 import React from 'react';
-import { BarChart, Bar, XAxis } from 'recharts';
-import styled from 'styled-components';
 
 import Pill from '../components/Pill';
 import Icon from '../components/Icon';
 import Group from '../components/Group';
-import TypingText from '../components/TypingText';
+import BarGraph from '../components/BarGraph';
+import PageItem from '../components/PageItem';
+import PageItemContainer from '../components/PageItemContainer';
+import TextLarge from '../components/TextLarge';
+import TextSmall from '../components/TextSmall';
+import TextFaded from '../components/TextFaded';
+import TextLink from '../components/TextLink';
+import TextTyping from '../components/TextTyping';
 
 import { dateToString, dateLengthToString } from '../utils/DateUtil';
-
-const PageItemDiv = styled.div`
-  background: #2c2c2c;
-  border-radius: 2px;
-  margin: 0px auto 20px auto;
-  padding: 20px;
-  width: 700px;
-
-  @media screen and (max-width: 1000px) {
-    border-radius: 0px;
-    box-shadow: none;
-    margin: 0px 0px 5px 0px;
-    min-width: 0px;
-    padding: 15px;
-    width: auto;
-  }
-`;
-
-const PageLargeText = styled.h2`
-  color: white;
-  font-size: 12pt;
-  margin-bottom: 0px;
-`;
-
-const PageSmallText = styled.p`
-  color: white;
-  font-size: 10pt;
-  margin-bottom: 0px;
-`;
-
-const PageFadedText = styled.p`
-  color: #b2b2b2;
-  font-size: 10pt;
-  margin-bottom: 0px;
-  margin-top: 4px;
-`;
-
-const PageLinkDiv = styled.a`
-  color: #05b1d1;
-  text-decoration: none;
-
-  &:hover {
-    color: white;
-  }
-`;
 
 const FontAwesomeWrapper = props => {
   const icons = props.icons;
@@ -65,7 +25,7 @@ const FontAwesomeWrapper = props => {
     );
   }
 
-  return <Group items={ iconDivs } />;
+  return <Group> { iconDivs } </Group>;
 };
 
 export default class AboutPage extends React.Component {
@@ -92,47 +52,50 @@ export default class AboutPage extends React.Component {
   }
 
   popDetails = (details = []) => {
-    const detailList = details.map((detail, index) => <PageSmallText key={ index }> { detail } </PageSmallText>);
+    const detailList = details.map((detail, index) =>
+      <TextSmall key={ index }> { detail } </TextSmall>
+    );
 
     return <div> { detailList } </div>;
   }
 
-  popExperience = (experience, skills, counter) => {
+  popExperience = (experience, skills) => {
     const dateLengthString = dateLengthToString(experience.startDate, experience.endDate);
     const startDateString = dateToString(experience.startDate);
-    const endDateString = experience.endDate ? dateToString(experience.endDate) : 'Present';
+    const endDateString = experience.endDate ? dateToString(experience.endDate) : "Present";
 
     const detailList = this.popDetails(experience.details);
     const pillDivs = skills.map((skill, index) =>
-      <Pill key={ index } skill={ skill } />
+      <Pill key={ index } link={ skill.link }> { skill.label } </Pill>
     );
 
     return (
-      <PageItemDiv key={ counter }>
-        <PageLargeText>
-          { experience.position } at <PageLinkDiv href={ experience.website } target="_blank" rel="noopener">
-            { experience.company }
-          </PageLinkDiv>
-        </PageLargeText>
-        <PageFadedText> { dateLengthString.length > 0 ? dateLengthString + ', ' : '' } { startDateString } - { endDateString } </PageFadedText>
+      <PageItem key={ experience.company + startDateString }>
+        <TextLarge>
+          { experience.position } at <TextLink link={ experience.website }> { experience.company } </TextLink>
+        </TextLarge>
+        <TextFaded>
+          { dateLengthString.length > 0 ? dateLengthString + ", " : "" } { startDateString } - { endDateString }
+        </TextFaded>
         { detailList }
-        <Group items={ pillDivs } />
-      </PageItemDiv>
-    );    
+        <Group> { pillDivs } </Group>
+      </PageItem>
+    );
   }
 
   popExperienceList = (experiences, skills) => {
     const experienceList = [];
 
-    let counter = 0;
     for (const experience of experiences) {
       const experienceSkills = experience.skills || [];
 
       const filteredSkills = skills.filter((skill) =>
-        experienceSkills.find((experienceSkill) => skill.name === experienceSkill)
+        experienceSkills.find((experienceSkill) =>
+          skill.name === experienceSkill
+        )
       );
 
-      experienceList.push(this.popExperience(experience, filteredSkills, counter++));
+      experienceList.push(this.popExperience(experience, filteredSkills));
     }
 
     return <div> { experienceList } </div>;
@@ -144,39 +107,43 @@ export default class AboutPage extends React.Component {
     const skills = this.state.skills;
 
     const experienceList = this.popExperienceList(experiences, skills);
+
     const backendData = [
-      {"name": "Python", "one": 3, "amt": 3},
-      {"name": "PHP", "one": 3, "amt": 3},
-      {"name": "Node.js", "one": 2, "amt": 3},
-      {"name": "Golang", "one": 1, "amt": 1},
+      { 'name': "Python", 'value': 3 },
+      { 'name': "PHP", 'value': 3 },
+      { 'name': "Node.js", 'value': 2 },
+      { 'name': "Golang", 'value': 1 }
     ];
-/*
+
     const frontendData = [
-      {"name": "JavaScript", "one": 3, "amt": 3},
-      {"name": "React", "one": 3, "amt": 3},
-      {"name": "Golang", "one": 1, "amt": 1},
+      { 'name': "JavaScript", 'value': 3 },
+      { 'name': "React", 'value': 2 },
+      { 'name': "JQuery", 'value': 2 }
     ];
-*/
+
     return (
       <div>
         { profile && Object.keys(profile).length > 0 &&
-          <PageItemDiv>
-            <PageLargeText> { profile.name } </PageLargeText>
-            <PageLargeText>
-              <TypingText toType={ profile.titles } loop={ true } />
-            </PageLargeText>
-            <PageLargeText> { profile.location } </PageLargeText>
+          <PageItem>
+            <TextLarge> { profile.name } </TextLarge>
+            <TextLarge>
+              <TextTyping toType={ profile.titles } loop={ true } />
+            </TextLarge>
+            <TextLarge> { profile.location } </TextLarge>
             <FontAwesomeWrapper icons={ profile.icons || [] } />
-          </PageItemDiv>
+          </PageItem>
         }
         { profile && Object.keys(profile).length > 0 &&
-          <PageItemDiv>
-            <PageLargeText> Backend Experience </PageLargeText>
-            <BarChart width={320} height={100} style={{marginTop: "16px"}} data={ backendData }>
-              <XAxis dataKey="name" stroke="white" />
-              <Bar dataKey="one" fill="#05b1d1" />
-            </BarChart>
-          </PageItemDiv>
+          <PageItemContainer>
+            <PageItem>
+              <TextLarge> Backend </TextLarge>
+              <BarGraph data={ backendData } barColor={ '#05b1d1' } axisDataKey={ 'name' } barDataKey={ 'value' } />
+            </PageItem>
+            <PageItem>
+              <TextLarge> Frontend </TextLarge>
+              <BarGraph data={ frontendData } barColor={ '#ee0060' } axisDataKey={ 'name' } barDataKey={ 'value' } />
+            </PageItem>
+          </PageItemContainer>
         }
         {experienceList}
       </div>
