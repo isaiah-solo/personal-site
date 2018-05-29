@@ -1,9 +1,9 @@
 import React from 'react';
-import { ResponsiveContainer, BarChart, Bar, XAxis } from 'recharts';
 
 import Pill from '../components/Pill';
 import Icon from '../components/Icon';
 import Group from '../components/Group';
+import BarGraph from '../components/BarGraph';
 import PageItem from '../components/PageItem';
 import PageItemContainer from '../components/PageItemContainer';
 import TextLarge from '../components/TextLarge';
@@ -103,16 +103,16 @@ export default class AboutPage extends React.Component {
 
     const experienceList = this.popExperienceList(experiences, skills);
     const backendData = [
-      {"name": "Python", "one": 3},
-      {"name": "PHP", "one": 3},
-      {"name": "Node.js", "one": 2},
-      {"name": "Golang", "one": 1},
+      {"name": "Python", "value": 3},
+      {"name": "PHP", "value": 3},
+      {"name": "Node.js", "value": 2},
+      {"name": "Golang", "value": 1},
     ];
 
     const frontendData = [
-      {"name": "JavaScript", "one": 3},
-      {"name": "React", "one": 2},
-      {"name": "JQuery", "one": 2},
+      {"name": "JavaScript", "value": 3},
+      {"name": "React", "value": 2},
+      {"name": "JQuery", "value": 2},
     ];
 
     return (
@@ -131,21 +131,11 @@ export default class AboutPage extends React.Component {
           <PageItemContainer>
             <PageItem>
               <TextLarge> Backend </TextLarge>
-              <ResponsiveContainer width="100%" height={100}>
-              <BarChart style={{marginTop: "16px"}} data={ backendData }>
-                <XAxis dataKey="name" axisLine={false} tickLine={false} stroke="white" />
-                <Bar dataKey="one" fill="#05b1d1" />
-              </BarChart>
-              </ResponsiveContainer>
+              <BarGraph data={ backendData } barColor="#05b1d1" axisDataKey="name" barDataKey="value" />
             </PageItem>
             <PageItem>
               <TextLarge> Frontend </TextLarge>
-              <ResponsiveContainer width="100%" height={100}>
-              <BarChart width={320} height={100} style={{marginTop: "16px"}} data={ frontendData }>
-                <XAxis dataKey="name" axisLine={false} tickLine={false} stroke="white" />
-                <Bar dataKey="one" fill="#ee0060" />
-              </BarChart>
-              </ResponsiveContainer>
+              <BarGraph data={ frontendData } barColor="#ee0060" axisDataKey="name" barDataKey="value" />
             </PageItem>
           </PageItemContainer>
         }
