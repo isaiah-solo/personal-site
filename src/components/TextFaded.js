@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const TextFadedDiv = styled.p`
   color: #b2b2b2;
-  font-size: 10pt;
+  font-size: 13px;
   margin-bottom: 0px;
   margin-top: 4px;
 `;

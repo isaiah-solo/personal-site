@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const TextLargeDiv = styled.h2`
   color: white;
-  font-size: 12pt;
+  font-size: 16px;
   margin-bottom: 0px;
 `;
 

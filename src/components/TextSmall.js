@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const TextSmallDiv = styled.p`
   color: white;
-  font-size: 10pt;
+  font-size: 13px;
   margin-bottom: 0px;
 `;
 
