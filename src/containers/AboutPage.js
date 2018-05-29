@@ -52,15 +52,17 @@ export default class AboutPage extends React.Component {
   }
 
   popDetails = (details = []) => {
-    const detailList = details.map((detail, index) => <TextSmall key={ index }> { detail } </TextSmall>);
+    const detailList = details.map((detail, index) =>
+      <TextSmall key={ index }> { detail } </TextSmall>
+    );
 
     return <div> { detailList } </div>;
   }
 
-  popExperience = (experience, skills, counter) => {
+  popExperience = (experience, skills) => {
     const dateLengthString = dateLengthToString(experience.startDate, experience.endDate);
     const startDateString = dateToString(experience.startDate);
-    const endDateString = experience.endDate ? dateToString(experience.endDate) : 'Present';
+    const endDateString = experience.endDate ? dateToString(experience.endDate) : "Present";
 
     const detailList = this.popDetails(experience.details);
     const pillDivs = skills.map((skill, index) =>
@@ -68,11 +70,13 @@ export default class AboutPage extends React.Component {
     );
 
     return (
-      <PageItem key={ counter }>
+      <PageItem key={ experience.company + startDateString }>
         <TextLarge>
           { experience.position } at <TextLink link={ experience.website }> { experience.company } </TextLink>
         </TextLarge>
-        <TextFaded> { dateLengthString.length > 0 ? dateLengthString + ', ' : '' } { startDateString } - { endDateString } </TextFaded>
+        <TextFaded>
+          { dateLengthString.length > 0 ? dateLengthString + ", " : "" } { startDateString } - { endDateString }
+        </TextFaded>
         { detailList }
         <Group> { pillDivs } </Group>
       </PageItem>
@@ -82,15 +86,16 @@ export default class AboutPage extends React.Component {
   popExperienceList = (experiences, skills) => {
     const experienceList = [];
 
-    let counter = 0;
     for (const experience of experiences) {
       const experienceSkills = experience.skills || [];
 
       const filteredSkills = skills.filter((skill) =>
-        experienceSkills.find((experienceSkill) => skill.name === experienceSkill)
+        experienceSkills.find((experienceSkill) =>
+          skill.name === experienceSkill
+        )
       );
 
-      experienceList.push(this.popExperience(experience, filteredSkills, counter++));
+      experienceList.push(this.popExperience(experience, filteredSkills));
     }
 
     return <div> { experienceList } </div>;
@@ -102,17 +107,18 @@ export default class AboutPage extends React.Component {
     const skills = this.state.skills;
 
     const experienceList = this.popExperienceList(experiences, skills);
+
     const backendData = [
-      {"name": "Python", "value": 3},
-      {"name": "PHP", "value": 3},
-      {"name": "Node.js", "value": 2},
-      {"name": "Golang", "value": 1},
+      { 'name': "Python", 'value': 3 },
+      { 'name': "PHP", 'value': 3 },
+      { 'name': "Node.js", 'value': 2 },
+      { 'name': "Golang", 'value': 1 }
     ];
 
     const frontendData = [
-      {"name": "JavaScript", "value": 3},
-      {"name": "React", "value": 2},
-      {"name": "JQuery", "value": 2},
+      { 'name': "JavaScript", 'value': 3 },
+      { 'name': "React", 'value': 2 },
+      { 'name': "JQuery", 'value': 2 }
     ];
 
     return (
@@ -131,11 +137,11 @@ export default class AboutPage extends React.Component {
           <PageItemContainer>
             <PageItem>
               <TextLarge> Backend </TextLarge>
-              <BarGraph data={ backendData } barColor="#05b1d1" axisDataKey="name" barDataKey="value" />
+              <BarGraph data={ backendData } barColor={ '#05b1d1' } axisDataKey={ 'name' } barDataKey={ 'value' } />
             </PageItem>
             <PageItem>
               <TextLarge> Frontend </TextLarge>
-              <BarGraph data={ frontendData } barColor="#ee0060" axisDataKey="name" barDataKey="value" />
+              <BarGraph data={ frontendData } barColor={ '#ee0060' } axisDataKey={ 'name' } barDataKey={ 'value' } />
             </PageItem>
           </PageItemContainer>
         }

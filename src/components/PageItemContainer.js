@@ -40,9 +40,10 @@ const PageItemDiv = styled.div`
 `;
 
 const PageItemContainer = props => {
-  let divs = props.children instanceof Array ? props.children : [props.children]
+  const divs = props.children instanceof Array ? props.children : [ props.children ]
+
   let key = 0;
-  let children = divs.map(element => {
+  const children = divs.map(element => {
     return <PageItemDiv key={ key++ }> { element.props.children } </PageItemDiv>;
   });
 

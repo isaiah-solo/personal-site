@@ -26,7 +26,7 @@ const PageLargeTextDiv = styled.div`
   text-decoration: none;
 `;
 
-const NotFoundPage = (props) => (
+const NotFoundPage = props => (
   <PageItemDiv>
     <PageLargeTextDiv>
       Sorry! What you are looking for cannot be found. Maybe try again soon?

@@ -11,7 +11,7 @@ const TextLinkDiv = styled.a`
 `;
 
 const TextLink = props => (
-  <TextLinkDiv href={ props.link || "" } target="_blank" rel="noopener">
+  <TextLinkDiv href={ props.link || '' } target={ '_blank' } rel={ 'noopener' }>
     { props.children }
   </TextLinkDiv>
 );

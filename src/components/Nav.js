@@ -58,9 +58,7 @@ const Nav = props => {
 
   return (
     <NavDiv>
-      <NavMenuDiv>
-        {navLinks}
-      </NavMenuDiv>
+      <NavMenuDiv> {navLinks} </NavMenuDiv>
     </NavDiv>
   );
 };

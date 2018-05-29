@@ -65,7 +65,7 @@ export default class TextTyping extends React.Component {
         }
 
         else {
-          resolve("Success");
+          resolve();
         }
       };
 
@@ -95,8 +95,6 @@ export default class TextTyping extends React.Component {
     if (phrases.length > 0) next();
   }
 
-  render = () => {
-    return <span> { this.state.text }<Cursor /> </span>;
-  }
+  render = () => <span> { this.state.text }<Cursor /> </span>;
 }
 

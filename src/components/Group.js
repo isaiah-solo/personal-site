@@ -6,8 +6,8 @@ const GroupDiv = styled.div`
 `;
 
 const Group = props => {
-  let children = props.children !== undefined ? props.children : [];
-  let childCount = children.reduce((total, val) => {
+  const children = props.children !== undefined ? props.children : [];
+  const childCount = children.reduce((total, val) => {
     return total + (typeof(val) === 'object' && val.length > 0 ? 1 : 0);
   }, 0);
 
