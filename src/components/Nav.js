@@ -50,13 +50,19 @@ const NavLinkDiv = styled(NavLink)`
 }
 `;
 
-const Nav = props => (
-  <NavDiv>
-    <NavMenuDiv>
-      <NavLinkDiv exact to="/"> about </NavLinkDiv>
-      <NavLinkDiv exact to="/blog"> blog </NavLinkDiv>
-    </NavMenuDiv>
-  </NavDiv>
-);
+const Nav = props => {
+  const linkArray = props.links || [];
+  const navLinks = linkArray.map(link => {
+    return <NavLinkDiv exact to={ link.to } key={ link.label }> { link.label } </NavLinkDiv>;
+  });
+
+  return (
+    <NavDiv>
+      <NavMenuDiv>
+        {navLinks}
+      </NavMenuDiv>
+    </NavDiv>
+  );
+};
 
 export default Nav;
