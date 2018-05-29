@@ -46,9 +46,7 @@ const PageItemContainer = props => {
     return <PageItemDiv key={ key++ }> { element.props.children } </PageItemDiv>;
   });
 
-  return (
-    <PageItemContainerDiv> { children } </PageItemContainerDiv>
-  );
+  return <PageItemContainerDiv> { children } </PageItemContainerDiv>;
 };
 
 export default PageItemContainer;

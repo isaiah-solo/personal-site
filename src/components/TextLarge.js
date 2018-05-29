@@ -7,9 +7,7 @@ const TextLargeDiv = styled.h2`
   margin-bottom: 0px;
 `;
 
-const TextLarge = props => (
-  <TextLargeDiv> { props.children } </TextLargeDiv>
-);
+const TextLarge = props => <TextLargeDiv> { props.children } </TextLargeDiv>;
 
 export default TextLarge;
 

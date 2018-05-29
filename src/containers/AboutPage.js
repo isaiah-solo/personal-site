@@ -64,7 +64,7 @@ export default class AboutPage extends React.Component {
 
     const detailList = this.popDetails(experience.details);
     const pillDivs = skills.map((skill, index) =>
-      <Pill key={ index } skill={ skill } />
+      <Pill key={ index } link={ skill.link }> { skill.label } </Pill>
     );
 
     return (

@@ -8,9 +8,7 @@ const TextFadedDiv = styled.p`
   margin-top: 4px;
 `;
 
-const TextFaded = props => (
-  <TextFadedDiv> { props.children } </TextFadedDiv>
-);
+const TextFaded = props => <TextFadedDiv> { props.children } </TextFadedDiv>;
 
 export default TextFaded;
 

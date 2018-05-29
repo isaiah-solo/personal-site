@@ -7,9 +7,7 @@ const TextSmallDiv = styled.p`
   margin-bottom: 0px;
 `;
 
-const TextSmall = props => (
-  <TextSmallDiv> { props.children } </TextSmallDiv>
-);
+const TextSmall = props => <TextSmallDiv> { props.children } </TextSmallDiv>;
 
 export default TextSmall;
 
