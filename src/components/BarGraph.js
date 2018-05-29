@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import { ResponsiveContainer, BarChart, Bar, XAxis } from 'recharts';
 
 const BarChartDiv = styled(BarChart)`
-  font-size: 10pt;
+  font-size: 13px;
   margin-top: 16px;
 
   @media screen and (max-width: 1000px) {
-    font-size: 6pt;
+    font-size: 8px;
   }
 `;
 
