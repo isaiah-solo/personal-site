@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { BrowserRouter as Router } from 'react-router-dom'
+
 import Nav from '../components/Nav.js';
 import Page from '../components/Page.js';
 
@@ -22,10 +24,12 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Nav links={ navLinks } />
-      <Page routes={ navRoutes } />
-    </div>
+    <Router>
+      <div>
+        <Nav links={ navLinks } />
+        <Page routes={ navRoutes } />
+      </div>
+    </Router>
   );
 }
 
