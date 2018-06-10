@@ -1,16 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CursorChar = styled.span`
-  background-color: #05b1d1;
-  color: #05b1d1;
+const TextLargeDiv = styled.h2`
+  color: white;
+  font-size: 16px;
+  margin-bottom: 0px;
 `;
 
-const Cursor = () => (
-  <CursorChar>_</CursorChar>
+const TextSmallDiv = styled.p`
+  color: white;
+  font-size: 13px;
+  margin-bottom: 0px;
+`;
+
+const TextFadedDiv = styled.p`
+  color: #b2b2b2;
+  font-size: 13px;
+  margin-bottom: 0px;
+  margin-top: 4px;
+`;
+
+const TextLinkDiv = styled.a`
+  color: #05b1d1;
+  text-decoration: none;
+
+  &:hover {
+    color: white;
+  }
+`;
+
+export const TextSmall = props => <TextSmallDiv> { props.children } </TextSmallDiv>;
+
+export const TextLarge = props => <TextLargeDiv> { props.children } </TextLargeDiv>;
+
+export const TextFaded = props => <TextFadedDiv> { props.children } </TextFadedDiv>;
+
+export const TextLink = props => (
+  <TextLinkDiv href={ props.link || '' } target={ '_blank' } rel={ 'noopener' }>
+    { props.children }
+  </TextLinkDiv>
 );
 
-export default class TextTyping extends React.Component {
+export class TextTyping extends React.Component {
   state = {
     text: "",
   }
@@ -19,6 +50,14 @@ export default class TextTyping extends React.Component {
     super(props);
 
     this.timeouts = [];
+    this.CursorChar = styled.span`
+      background-color: #05b1d1;
+      color: #05b1d1;
+    `;
+
+    this.Cursor = () => (
+      <this.CursorChar>_</this.CursorChar>
+    );
   }
 
   componentDidMount = () => {
@@ -95,6 +134,6 @@ export default class TextTyping extends React.Component {
     if (phrases.length > 0) next();
   }
 
-  render = () => <span> { this.state.text }<Cursor /> </span>;
+  render = () => <span> { this.state.text }<this.Cursor /> </span>;
 }
 
