@@ -27,13 +27,13 @@ export default class BlogPage extends React.Component {
       const body = post.body || [];
 
       const content = body.map(paragraph =>
-        <TextSmall key={ paragraph.text }> { paragraph.text || "" } </TextSmall>
+        <TextSmall key={paragraph.text}> {paragraph.text || ""} </TextSmall>
       );
 
       return (
-        <PageItem key={ title + content }>
-          <TextLarge> { title } </TextLarge>
-          { content }
+        <PageItem key={title + content}>
+          <TextLarge> {title} </TextLarge>
+          {content}
         </PageItem>
       );
     });
@@ -44,7 +44,7 @@ export default class BlogPage extends React.Component {
   render() {
     const posts = this.popPosts(this.state.posts);
 
-    return <div> { posts } </div>;
+    return <div> {posts} </div>;
   }
 }
 

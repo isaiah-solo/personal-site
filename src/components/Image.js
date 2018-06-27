@@ -9,7 +9,7 @@ const ImageDiv = styled.img`
 `;
 
 const Image = props => (
-  <ImageDiv src={ props.src } alt={ props.alt } />
+  <ImageDiv src={props.src} alt={props.alt} />
 );
 
 export default Image;

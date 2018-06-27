@@ -51,14 +51,14 @@ const PageItemDiv = styled.div`
 `;
 
 const PageItemContainer = props => {
-  const divs = props.children instanceof Array ? props.children : [ props.children ]
+  const divs = props.children instanceof Array ? props.children : [props.children]
 
   let key = 0;
   const children = divs.map(element => {
-    return <PageItemDiv key={ key++ }> { element.props.children } </PageItemDiv>;
+    return <PageItemDiv key={key++}> {element.props.children} </PageItemDiv>;
   });
 
-  return <PageItemContainerDiv> { children } </PageItemContainerDiv>;
+  return <PageItemContainerDiv> {children} </PageItemContainerDiv>;
 };
 
 export default PageItemContainer;

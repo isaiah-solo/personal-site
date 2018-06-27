@@ -53,7 +53,7 @@ const NavLinkDiv = styled(NavLink)`
 const Nav = props => {
   const linkArray = props.links || [];
   const navLinks = linkArray.map(link => {
-    return <NavLinkDiv exact to={ link.to } key={ link.label }> { link.label } </NavLinkDiv>;
+    return <NavLinkDiv exact to={link.to} key={link.label}> {link.label} </NavLinkDiv>;
   });
 
   return (

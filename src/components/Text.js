@@ -29,15 +29,15 @@ const TextLinkDiv = styled.a`
   }
 `;
 
-export const TextSmall = props => <TextSmallDiv> { props.children } </TextSmallDiv>;
+export const TextSmall = props => <TextSmallDiv> {props.children} </TextSmallDiv>;
 
-export const TextLarge = props => <TextLargeDiv> { props.children } </TextLargeDiv>;
+export const TextLarge = props => <TextLargeDiv> {props.children} </TextLargeDiv>;
 
-export const TextFaded = props => <TextFadedDiv> { props.children } </TextFadedDiv>;
+export const TextFaded = props => <TextFadedDiv> {props.children} </TextFadedDiv>;
 
 export const TextLink = props => (
-  <TextLinkDiv href={ props.link || '' } target={ '_blank' } rel={ 'noopener' }>
-    { props.children }
+  <TextLinkDiv href={props.link || ''} target={'_blank'} rel={'noopener'}>
+    {props.children}
   </TextLinkDiv>
 );
 
@@ -74,7 +74,7 @@ export class TextTyping extends React.Component {
     return new Promise(resolve => {
       this.timeouts.push(
         setTimeout(() => {
-          this.setState({ text: newText }, () => {
+          this.setState({text: newText}, () => {
             resolve(newText);
           });
         }, this.props.typeSpeed || 40)
@@ -134,6 +134,6 @@ export class TextTyping extends React.Component {
     if (phrases.length > 0) next();
   }
 
-  render = () => <span> { this.state.text }<this.Cursor /> </span>;
+  render = () => <span> {this.state.text}<this.Cursor /> </span>;
 }
 

@@ -27,24 +27,24 @@ const RightColumnDiv = styled.div`
 
 const popIcons = (icons = []) => {
   const iconDivs = icons.map(icon => (
-    <Icon key={ icon.name } name={ icon.name } link={ icon.website } />
+    <Icon key={icon.name} name={icon.name} link={icon.website} />
   ));
 
-  return <Group> { iconDivs } </Group>;
+  return <Group> {iconDivs} </Group>;
 }
 
 const RightColumn = props => {
   const text = props.text.map(phrase => (
-    <TextLarge key={ phrase }> { phrase } </TextLarge>
+    <TextLarge key={phrase}> {phrase} </TextLarge>
   ));
 
   const icons = popIcons(props.icons);
 
   return (
     <RightColumnDiv>
-      <Image src={ handle } alt={ "Profile Picture" } />
-      { text }
-      { icons }
+      <Image src={handle} alt={"Profile Picture"} />
+      {text}
+      {icons}
     </RightColumnDiv>
   );
 };

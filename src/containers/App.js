@@ -16,7 +16,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount = () => {
-    fetch('/api/static/profile', { headers: { 'Content-Type': 'application/json' } })
+    fetch('/api/static/profile', {headers: {'Content-Type': 'application/json'}})
         .then(res => {
           if (!res.ok) {
             throw Error(res.statusText);
@@ -40,7 +40,7 @@ export default class App extends React.Component {
         { path: '/', component: AboutPage },
         { path: '/blog', component: BlogPage }
       ],
-      notFound: { path: '*', component: NotFoundPage }
+      notFound: {path: '*', component: NotFoundPage}
     };
 
     const profile = this.state.profile || {};
@@ -55,9 +55,9 @@ export default class App extends React.Component {
     return (
       <Router>
         <div>
-          <RightColumn text={ text } icons={ icons } />
-          <Nav links={ navLinks } />
-          <Page routes={ navRoutes } />
+          <RightColumn text={text} icons={icons} />
+          <Nav links={navLinks} />
+          <Page routes={navRoutes} />
         </div>
       </Router>
     );

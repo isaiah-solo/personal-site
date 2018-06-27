@@ -12,8 +12,8 @@ const Group = props => {
   }, 0);
 
   return (
-    <GroupDiv empty={ childCount === 0 }>
-      { props.children }
+    <GroupDiv empty={childCount === 0}>
+      {props.children}
     </GroupDiv>
   );
 };

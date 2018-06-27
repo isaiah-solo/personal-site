@@ -31,10 +31,10 @@ export default class AboutPage extends React.Component {
 
   popDetails = (details = []) => {
     const detailList = details.map((detail, index) =>
-      <TextSmall key={ index }> { detail } </TextSmall>
+      <TextSmall key={index}> {detail} </TextSmall>
     );
 
-    return <div> { detailList } </div>;
+    return <div> {detailList} </div>;
   }
 
   popExperience = (experience, skills) => {
@@ -44,19 +44,19 @@ export default class AboutPage extends React.Component {
 
     const detailList = this.popDetails(experience.details);
     const pillDivs = skills.map((skill, index) =>
-      <Pill key={ index } link={ skill.link }> { skill.label } </Pill>
+      <Pill key={index} link={skill.link}> {skill.label} </Pill>
     );
 
     return (
-      <PageItem key={ experience.company + startDateString }>
+      <PageItem key={experience.company + startDateString}>
         <TextLarge>
-          { experience.position } at <TextLink link={ experience.website }> { experience.company } </TextLink>
+          {experience.position} at <TextLink link={experience.website}> {experience.company} </TextLink>
         </TextLarge>
         <TextFaded>
-          { dateLengthString.length > 0 ? dateLengthString + ", " : "" } { startDateString } - { endDateString }
+          {dateLengthString.length > 0 ? dateLengthString + ", " : ""} {startDateString} - {endDateString}
         </TextFaded>
-        { detailList }
-        <Group> { pillDivs } </Group>
+        {detailList}
+        <Group> {pillDivs} </Group>
       </PageItem>
     );
   }
@@ -76,7 +76,7 @@ export default class AboutPage extends React.Component {
       experienceList.push(this.popExperience(experience, filteredSkills));
     }
 
-    return <div> { experienceList } </div>;
+    return <div> {experienceList} </div>;
   }
 
   render = () => {
@@ -88,11 +88,11 @@ export default class AboutPage extends React.Component {
           <PageItemContainer>
             <PageItem>
               <TextLarge> Backend </TextLarge>
-              <BarGraph data={ about.backend } barColor={ '#05b1d1' } axisDataKey={ 'name' } barDataKey={ 'value' } />
+              <BarGraph data={about.backend} barColor={'#05b1d1'} axisDataKey={'name'} barDataKey={'value'} />
             </PageItem>
             <PageItem>
               <TextLarge> Frontend </TextLarge>
-              <BarGraph data={ about.frontend } barColor={ '#ee0060' } axisDataKey={ 'name' } barDataKey={ 'value' } />
+              <BarGraph data={about.frontend} barColor={'#ee0060'} axisDataKey={'name'} barDataKey={'value'} />
             </PageItem>
           </PageItemContainer>
         }
