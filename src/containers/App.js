@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import RightColumn from '../containers/RightColumn';
 import BlogPage from '../containers/BlogPage';
-import AboutPage from '../containers/AboutPage';
+import HomePage from '../containers/HomePage';
 import NotFoundPage from '../containers/NotFoundPage';
 
 import Nav from '../components/Nav';
@@ -29,12 +29,12 @@ export default class App extends React.Component {
 
   render = () => {
     const navLinks = [
-      {to: '/', label: 'about'},
+      {to: '/', label: 'home'},
       {to: '/blog', label: 'blog'}
     ];
     const navRoutes = {
       pages: [
-        {path: '/', component: AboutPage},
+        {path: '/', component: HomePage},
         {path: '/blog', component: BlogPage}
       ],
       notFound: {path: '*', component: NotFoundPage}

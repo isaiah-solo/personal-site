@@ -3,7 +3,8 @@ body {
   overflow-y: scroll;
   padding: 0px;
   background: #202020;
-  font-family: 'Monaco', 'Courier New';
+  font-family: Verdana;
+  line-height: 21px;
 }
 
 h1, h2 {

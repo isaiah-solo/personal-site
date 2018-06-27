@@ -12,11 +12,11 @@ const fadein = keyframes`
 `;
 
 const PageItemDiv = styled.div`
-  background: #2c2c2c;
+  border-bottom: 1px solid #2c2c2c;
   border-radius: 2px;
-  margin: 0px auto 20px auto;
-  padding: 20px;
-  width: 700px;
+  margin: 0px auto;
+  padding: 20px 0px;
+  width: 740px;
   animation: ${fadein} 0.5s ease;
 
   @media screen and (max-width: 1000px) {

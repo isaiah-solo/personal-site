@@ -17,7 +17,7 @@ const TextFadedDiv = styled.p`
   color: #b2b2b2;
   font-size: 13px;
   margin-bottom: 0px;
-  margin-top: 4px;
+  margin-top: 2px;
 `;
 
 const TextLinkDiv = styled.a`

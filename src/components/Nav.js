@@ -36,7 +36,7 @@ const NavMenuDiv = styled.div`
 
 const NavLinkDiv = styled(NavLink)`
   color: #05b1d1;
-  font-size: 19px;
+  font-size: 18px;
   margin: auto;
   text-decoration: none;
 
