@@ -16,15 +16,14 @@ const PageDiv = styled.div`
   }
 `;
 
-const Page = props => {
-  const routes = props.routes || {};
-  const pages = routes.pages || [];
-  const pageRoutes = pages.map(page => {
-    return <Route exact path={page.path} component={page.component} key={page.path} />;
+const Page = ({routes}) => {
+  const {notFound, pages} = routes;
+  const pageRoutes = pages.map(({component, path}, index) => {
+    return <Route exact path={path} component={component} key={path} />;
   });
 
-  if (routes.notFound) {
-    pageRoutes.push(<Route exact path={routes.notFound.path} render={routes.notFound.component} key={routes.notFound.path} />);
+  if (notFound) {
+    pageRoutes.push(<Route exact path={notFound.path} render={notFound.component} key={notFound.path} />);
   }
 
   return (

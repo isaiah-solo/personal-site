@@ -50,15 +50,12 @@ const PageItemDiv = styled.div`
   }
 `;
 
-const PageItemContainer = props => {
-  const divs = props.children instanceof Array ? props.children : [props.children]
+const PageItemContainer = ({children}) => {
+  const childrenDivs = React.Children.map(children, (element, index) => (
+    <PageItemDiv key={index}> {element.props.children} </PageItemDiv>
+  ));
 
-  let key = 0;
-  const children = divs.map(element => {
-    return <PageItemDiv key={key++}> {element.props.children} </PageItemDiv>;
-  });
-
-  return <PageItemContainerDiv> {children} </PageItemContainerDiv>;
+  return <PageItemContainerDiv> {childrenDivs} </PageItemContainerDiv>;
 };
 
 export default PageItemContainer;

@@ -29,15 +29,15 @@ const TextLinkDiv = styled.a`
   }
 `;
 
-export const TextSmall = props => <TextSmallDiv> {props.children} </TextSmallDiv>;
+export const TextSmall = ({children}) => <TextSmallDiv> {children} </TextSmallDiv>;
 
-export const TextLarge = props => <TextLargeDiv> {props.children} </TextLargeDiv>;
+export const TextLarge = ({children}) => <TextLargeDiv> {children} </TextLargeDiv>;
 
-export const TextFaded = props => <TextFadedDiv> {props.children} </TextFadedDiv>;
+export const TextFaded = ({children}) => <TextFadedDiv> {children} </TextFadedDiv>;
 
-export const TextLink = props => (
-  <TextLinkDiv href={props.link || ''} target={'_blank'} rel={'noopener'}>
-    {props.children}
+export const TextLink = ({children, link}) => (
+  <TextLinkDiv href={link} target={'_blank'} rel={'noopener'}>
+    {children}
   </TextLinkDiv>
 );
 
@@ -56,7 +56,7 @@ export class TextTyping extends React.Component {
     `;
 
     this.Cursor = () => (
-      <this.CursorChar>_</this.CursorChar>
+      <this.CursorChar>{'_'}</this.CursorChar>
     );
   }
 
@@ -88,7 +88,7 @@ export class TextTyping extends React.Component {
       let isBackspacing = false;
 
       const next = (base = this.state.text) => {
-        if (isBackspacing === false && current < sentence.length) {
+        if (!isBackspacing && current < sentence.length) {
           const letter = sentence[current++];
           this.updateLetter(base + letter).then(next);
         }

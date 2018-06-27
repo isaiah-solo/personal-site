@@ -16,17 +16,13 @@ export default class AboutPage extends React.Component {
   }
 
   componentDidMount = () => {
-    fetch('/api/static/about', { headers: { 'Content-Type': 'application/json' } })
+    fetch('/api/static/about', {headers: {'Content-Type': 'application/json'}})
         .then(res => {
-          if (!res.ok) {
-            throw Error(res.statusText);
-          }
+          if (!res.ok) throw Error(res.statusText);
           return res.json();
         })
-        .then(obj => this.setState({
-          about: obj.about
-        }))
-        .catch((error) => console.log(error));
+        .then(about => this.setState(about))
+        .catch(error => console.log(error));
   }
 
   popDetails = (details = []) => {
@@ -37,26 +33,26 @@ export default class AboutPage extends React.Component {
     return <div> {detailList} </div>;
   }
 
-  popExperience = (experience, skills) => {
-    const dateLengthString = dateLengthToString(experience.startDate, experience.endDate);
-    const startDateString = dateToString(experience.startDate);
-    const endDateString = experience.endDate ? dateToString(experience.endDate) : "Present";
+  popExperience = ({company, details, endDate, position, startDate, website}, skills) => {
+    const dateLengthString = dateLengthToString(startDate, endDate);
+    const startDateString = dateToString(startDate);
+    const endDateString = endDate ? dateToString(endDate) : "Present";
 
-    const detailList = this.popDetails(experience.details);
-    const pillDivs = skills.map((skill, index) =>
-      <Pill key={index} link={skill.link}> {skill.label} </Pill>
+    const detailList = this.popDetails(details);
+    const pillDivs = skills.map(({label, link}, index) =>
+      <Pill key={index} link={link}> {label} </Pill>
     );
 
     return (
-      <PageItem key={experience.company + startDateString}>
+      <PageItem key={company + startDateString}>
         <TextLarge>
-          {experience.position} at <TextLink link={experience.website}> {experience.company} </TextLink>
+          {`${position} at `} <TextLink link={website}> {company} </TextLink>
         </TextLarge>
         <TextFaded>
-          {dateLengthString.length > 0 ? dateLengthString + ", " : ""} {startDateString} - {endDateString}
+          {`${dateLengthString}, ${startDateString} - ${endDateString}`}
         </TextFaded>
         {detailList}
-        <Group> {pillDivs} </Group>
+        {pillDivs.length > 0 && <Group> {pillDivs} </Group>}
       </PageItem>
     );
   }
@@ -68,9 +64,7 @@ export default class AboutPage extends React.Component {
       const experienceSkills = experience.skills || [];
 
       const filteredSkills = skills.filter((skill) =>
-        experienceSkills.find((experienceSkill) =>
-          skill.name === experienceSkill
-        )
+        experienceSkills.find((experienceSkill) => skill.name === experienceSkill)
       );
 
       experienceList.push(this.popExperience(experience, filteredSkills));
@@ -80,23 +74,24 @@ export default class AboutPage extends React.Component {
   }
 
   render = () => {
-    const about = this.state.about;
+    const {about} = this.state;
+    const {backend, frontend, jobs, skills} = about;
 
     return (
       <div>
-        { about && Object.keys(about).length > 0 &&
+        {about && Object.keys(about).length > 0 &&
           <PageItemContainer>
             <PageItem>
-              <TextLarge> Backend </TextLarge>
-              <BarGraph data={about.backend} barColor={'#05b1d1'} axisDataKey={'name'} barDataKey={'value'} />
+              <TextLarge> {"Backend"} </TextLarge>
+              <BarGraph data={backend} barColor={'#05b1d1'} axisDataKey={'name'} barDataKey={'value'} />
             </PageItem>
             <PageItem>
-              <TextLarge> Frontend </TextLarge>
-              <BarGraph data={about.frontend} barColor={'#ee0060'} axisDataKey={'name'} barDataKey={'value'} />
+              <TextLarge> {"Frontend"} </TextLarge>
+              <BarGraph data={frontend} barColor={'#ee0060'} axisDataKey={'name'} barDataKey={'value'} />
             </PageItem>
           </PageItemContainer>
         }
-        { about && Object.keys(about).length > 0 && this.popExperiences(about.jobs, about.skills) }
+        {about && Object.keys(about).length > 0 && this.popExperiences(jobs, skills)}
       </div>
     );
   }

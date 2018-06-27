@@ -8,8 +8,8 @@ const ImageDiv = styled.img`
   margin-bottom: 20px;
 `;
 
-const Image = props => (
-  <ImageDiv src={props.src} alt={props.alt} />
+const Image = ({alt, src}) => (
+  <ImageDiv src={src} alt={alt} />
 );
 
 export default Image;

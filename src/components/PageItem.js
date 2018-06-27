@@ -29,7 +29,7 @@ const PageItemDiv = styled.div`
   }
 `;
 
-const PageItem = props => <PageItemDiv> {props.children} </PageItemDiv>;
+const PageItem = ({children}) => <PageItemDiv> {children} </PageItemDiv>;
 
 export default PageItem;
 

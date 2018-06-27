@@ -22,16 +22,13 @@ export default class BlogPage extends React.Component {
   }
 
   popPosts = (posts = []) => {
-    const postList = posts.map(post => {
-      const title = post.title || "";
-      const body = post.body || [];
-
-      const content = body.map(paragraph =>
-        <TextSmall key={paragraph.text}> {paragraph.text || ""} </TextSmall>
+    const postList = posts.map(({body, title}, index) => {
+      const content = body.map(({text}, index) =>
+        <TextSmall key={index}> {text} </TextSmall>
       );
 
       return (
-        <PageItem key={title + content}>
+        <PageItem key={index}>
           <TextLarge> {title} </TextLarge>
           {content}
         </PageItem>
