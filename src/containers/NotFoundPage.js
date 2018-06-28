@@ -29,7 +29,7 @@ const PageLargeTextDiv = styled.div`
 const NotFoundPage = props => (
   <PageItemDiv>
     <PageLargeTextDiv>
-      Sorry! What you are looking for cannot be found. Maybe try again soon?
+      {"Sorry! What you are looking for cannot be found. Maybe try again soon?"}
     </PageLargeTextDiv>
   </PageItemDiv>
 );

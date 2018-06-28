@@ -26,25 +26,24 @@ const RightColumnDiv = styled.div`
 `;
 
 const popIcons = (icons = []) => {
-  const iconDivs = icons.map(icon => (
-    <Icon key={ icon.name } name={ icon.name } link={ icon.website } />
+  const iconDivs = icons.map(({name, website}, index) => (
+    <Icon key={index} name={name} link={website} />
   ));
 
-  return <Group> { iconDivs } </Group>;
+  return <Group> {iconDivs} </Group>;
 }
 
-const RightColumn = props => {
-  const text = props.text.map(phrase => (
-    <TextLarge key={ phrase }> { phrase } </TextLarge>
+const RightColumn = ({icons, text}) => {
+  const iconDivs = popIcons(icons);
+  const content = text.map(phrase => (
+    <TextLarge key={phrase}> {phrase} </TextLarge>
   ));
-
-  const icons = popIcons(props.icons);
 
   return (
     <RightColumnDiv>
-      <Image src={ handle } alt={ "Profile Picture" } />
-      { text }
-      { icons }
+      <Image src={handle} alt={"Profile Picture"} />
+      {content}
+      {iconDivs}
     </RightColumnDiv>
   );
 };

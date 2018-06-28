@@ -1,10 +1,15 @@
 import React from 'react';
-import PageItem from '../components/PageItem'
+import PageItem from '../components/PageItem';
+import styled from 'styled-components';
 
-import { TextLarge, TextSmall } from '../components/Text'
+import { TextLarge, TextSmall } from '../components/Text';
+
+const BlogPageDiv = styled.div`
+  font-family: Verdana;
+  line-height: 21px;
+`;
 
 export default class BlogPage extends React.Component {
-
   state = {
     posts: [
       {
@@ -22,18 +27,15 @@ export default class BlogPage extends React.Component {
   }
 
   popPosts = (posts = []) => {
-    const postList = posts.map(post => {
-      const title = post.title || "";
-      const body = post.body || [];
-
-      const content = body.map(paragraph =>
-        <TextSmall key={ paragraph.text }> { paragraph.text || "" } </TextSmall>
+    const postList = posts.map(({body, title}, index) => {
+      const content = body.map(({text}, index) =>
+        <TextSmall key={index}> {text} </TextSmall>
       );
 
       return (
-        <PageItem key={ title + content }>
-          <TextLarge> { title } </TextLarge>
-          { content }
+        <PageItem key={index}>
+          <TextLarge> {title} </TextLarge>
+          {content}
         </PageItem>
       );
     });
@@ -44,7 +46,7 @@ export default class BlogPage extends React.Component {
   render() {
     const posts = this.popPosts(this.state.posts);
 
-    return <div> { posts } </div>;
+    return <BlogPageDiv> {posts} </BlogPageDiv>;
   }
 }
 

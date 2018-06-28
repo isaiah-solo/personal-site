@@ -17,7 +17,7 @@ const TextFadedDiv = styled.p`
   color: #b2b2b2;
   font-size: 13px;
   margin-bottom: 0px;
-  margin-top: 4px;
+  margin-top: 2px;
 `;
 
 const TextLinkDiv = styled.a`
@@ -29,15 +29,15 @@ const TextLinkDiv = styled.a`
   }
 `;
 
-export const TextSmall = props => <TextSmallDiv> { props.children } </TextSmallDiv>;
+export const TextSmall = ({children}) => <TextSmallDiv> {children} </TextSmallDiv>;
 
-export const TextLarge = props => <TextLargeDiv> { props.children } </TextLargeDiv>;
+export const TextLarge = ({children}) => <TextLargeDiv> {children} </TextLargeDiv>;
 
-export const TextFaded = props => <TextFadedDiv> { props.children } </TextFadedDiv>;
+export const TextFaded = ({children}) => <TextFadedDiv> {children} </TextFadedDiv>;
 
-export const TextLink = props => (
-  <TextLinkDiv href={ props.link || '' } target={ '_blank' } rel={ 'noopener' }>
-    { props.children }
+export const TextLink = ({children, link}) => (
+  <TextLinkDiv href={link} target={'_blank'} rel={'noopener'}>
+    {children}
   </TextLinkDiv>
 );
 
@@ -56,7 +56,7 @@ export class TextTyping extends React.Component {
     `;
 
     this.Cursor = () => (
-      <this.CursorChar>_</this.CursorChar>
+      <this.CursorChar>{'_'}</this.CursorChar>
     );
   }
 
@@ -74,7 +74,7 @@ export class TextTyping extends React.Component {
     return new Promise(resolve => {
       this.timeouts.push(
         setTimeout(() => {
-          this.setState({ text: newText }, () => {
+          this.setState({text: newText}, () => {
             resolve(newText);
           });
         }, this.props.typeSpeed || 40)
@@ -88,7 +88,7 @@ export class TextTyping extends React.Component {
       let isBackspacing = false;
 
       const next = (base = this.state.text) => {
-        if (isBackspacing === false && current < sentence.length) {
+        if (!isBackspacing && current < sentence.length) {
           const letter = sentence[current++];
           this.updateLetter(base + letter).then(next);
         }
@@ -134,6 +134,6 @@ export class TextTyping extends React.Component {
     if (phrases.length > 0) next();
   }
 
-  render = () => <span> { this.state.text }<this.Cursor /> </span>;
+  render = () => <span> {this.state.text}<this.Cursor /> </span>;
 }
 
