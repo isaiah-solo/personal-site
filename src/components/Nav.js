@@ -14,18 +14,20 @@ const NavDiv = styled.div`
   @media screen and (max-width: 1000px) {
     box-shadow: none;
     height: 52px;
-    padding-left: 10px;
+    padding-left: 15px;
   }
 `;
 
 const NavMenuDiv = styled.div`
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 52px;
+  justify-content: flex-start;
   margin: 0 auto;
-  padding: 5px;
   position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 740px;
 
   @media screen and (max-width: 1000px) {
@@ -37,7 +39,7 @@ const NavMenuDiv = styled.div`
 const NavLinkDiv = styled(NavLink)`
   color: #05b1d1;
   font-size: 18px;
-  margin: auto;
+  margin-right: 12px;
   text-decoration: none;
 
   &:hover {

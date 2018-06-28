@@ -19,6 +19,10 @@ const PageItemDiv = styled.div`
   width: 740px;
   animation: ${fadein} 0.5s ease;
 
+  &:last-child {
+    border-bottom: none;
+  }
+
   @media screen and (max-width: 1000px) {
     border-radius: 0px;
     box-shadow: none;
