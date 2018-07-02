@@ -12,7 +12,6 @@ const fadein = keyframes`
 `;
 
 const PageItemDiv = styled.div`
-  border-bottom: 1px solid #2c2c2c;
   border-radius: 2px;
   margin: 0px auto;
   padding: 20px 0px;
@@ -24,6 +23,7 @@ const PageItemDiv = styled.div`
   }
 
   @media screen and (max-width: 1000px) {
+    border-bottom: 1px solid #2c2c2c;
     border-radius: 0px;
     box-shadow: none;
     margin: 0px 0px 5px 0px;
