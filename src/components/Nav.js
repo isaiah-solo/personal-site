@@ -28,7 +28,7 @@ const NavMenuDiv = styled.div`
   justify-content: flex-start;
   margin: 0 auto;
   position: relative;
-  width: 740px;
+  width: 700px;
 
   @media screen and (max-width: 1000px) {
     margin: 0px;
@@ -53,13 +53,15 @@ const NavLinkDiv = styled(NavLink)`
 `;
 
 const Nav = ({links}) => {
-  const navLinks = links.map(({label, to}, index) => {
+  const navLinkDivs = links.map(({label, to}, index) => {
     return <NavLinkDiv exact to={to} key={index}> {label} </NavLinkDiv>;
   });
 
   return (
     <NavDiv>
-      <NavMenuDiv> {navLinks} </NavMenuDiv>
+      <NavMenuDiv>
+        {navLinkDivs}
+      </NavMenuDiv>
     </NavDiv>
   );
 };

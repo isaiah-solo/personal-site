@@ -18,13 +18,11 @@ const PageDiv = styled.div`
 
 const Page = ({routes}) => {
   const {notFound, pages} = routes;
-  const pageRoutes = pages.map(({component, path}, index) => {
-    return <Route exact path={path} component={component} key={path} />;
+  const allRoutes = [...pages, notFound];
+  const pageRoutes = allRoutes.map(({component, path}, index) => {
+    const componentProp = index < allRoutes.length ? {component} : {render: component}; 
+    return <Route exact path={path} {...componentProp} key={index} />;
   });
-
-  if (notFound) {
-    pageRoutes.push(<Route exact path={notFound.path} render={notFound.component} key={notFound.path} />);
-  }
 
   return (
     <PageDiv>

@@ -16,7 +16,7 @@ const PageItemDiv = styled.div`
   border-radius: 2px;
   margin: 0px auto;
   padding: 20px 0px;
-  width: 740px;
+  width: 700px;
   animation: ${fadein} 0.5s ease;
 
   &:last-child {

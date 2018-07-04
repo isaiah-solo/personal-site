@@ -2,10 +2,10 @@ import React from 'react';
 
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import RightColumn from '../containers/RightColumn';
-import BlogPage from '../containers/BlogPage';
-import HomePage from '../containers/HomePage';
-import NotFoundPage from '../containers/NotFoundPage';
+import RightColumn from '../components/RightColumn';
+import BlogPage from '../components/BlogPage';
+import HomePage from '../components/HomePage';
+import NotFoundPage from '../components/NotFoundPage';
 
 import Nav from '../components/Nav';
 import Page from '../components/Page';
@@ -48,11 +48,11 @@ export default class App extends React.Component {
 
     return (
       <Router>
-        <div>
+        <React.Fragment>
           <RightColumn text={text} icons={icons} />
           <Nav links={navLinks} />
           <Page routes={navRoutes} />
-        </div>
+        </React.Fragment>
       </Router>
     );
   };

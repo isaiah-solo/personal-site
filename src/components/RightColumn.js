@@ -14,7 +14,7 @@ const RightColumnDiv = styled.div`
   width: calc(50% - 450px);
   position: fixed;
   top: 72px;
-  left: calc(50% + 410px);
+  left: calc(50% + 370px);
 
   @media screen and (max-width: 1200px) {
     display: none;
@@ -25,25 +25,20 @@ const RightColumnDiv = styled.div`
   }
 `;
 
-const popIcons = (icons = []) => {
-  const iconDivs = icons.map(({name, website}, index) => (
+const RightColumn = ({icons, text}) => {
+  const iconDivs = icons && icons.map(({name, website}, index) => (
     <Icon key={index} name={name} link={website} />
   ));
-
-  return <Group> {iconDivs} </Group>;
-}
-
-const RightColumn = ({icons, text}) => {
-  const iconDivs = popIcons(icons);
-  const content = text.map(phrase => (
+  const groupDiv = iconDivs && <Group> {iconDivs} </Group>;
+  const contentDivs = text.map(phrase => (
     <TextLarge key={phrase}> {phrase} </TextLarge>
   ));
 
   return (
     <RightColumnDiv>
       <Image src={handle} alt={"Profile Picture"} />
-      {content}
-      {iconDivs}
+      {contentDivs}
+      {groupDiv}
     </RightColumnDiv>
   );
 };

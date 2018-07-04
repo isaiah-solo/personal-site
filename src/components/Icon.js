@@ -21,7 +21,7 @@ const IconDiv = styled.a`
 const Icon = ({link, name}) => (
   <IconWrapperDiv>
     <IconDiv href={link} target={'_blank'} rel={'noopener'}>
-      <FontAwesome className={name || ''} name={name || ''} size={'2x'} />
+      <FontAwesome className={name} name={name} size={'2x'} />
     </IconDiv>
   </IconWrapperDiv>
 );

@@ -8,7 +8,7 @@ const PillDiv = styled.a`
   display: inline-block;
   font-size: 10pt;
   margin: 5px 10px 5px 0px;
-  padding: 5px 10px 5px 10px;
+  padding: 2px 10px 2px 10px;
   text-decoration: none;
   width: auto;
 

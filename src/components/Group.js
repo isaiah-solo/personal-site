@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GroupDiv = styled.div`
-  margin-top: ${ props => props.empty ? '0px' : '16px' };
+  margin-top: ${ props => props.empty ? '0px' : '13px' };
 `;
 
 const Group = ({children}) => (
