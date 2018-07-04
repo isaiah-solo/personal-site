@@ -28,7 +28,7 @@ export default class HomePage extends React.Component {
       <TextSmall key={index}> {detail} </TextSmall>
     );
 
-    return <div> {detailList} </div>;
+    return <React.Fragment> {detailList} </React.Fragment>;
   }
 
   popExperience = ({company, details, endDate, position, startDate, website}, skills) => {
@@ -68,7 +68,7 @@ export default class HomePage extends React.Component {
       experienceList.push(this.popExperience(experience, filteredSkills));
     }
 
-    return <div> {experienceList} </div>;
+    return <React.Fragment> {experienceList} </React.Fragment>;
   }
 
   render = () => {
@@ -77,11 +77,6 @@ export default class HomePage extends React.Component {
 
     return (
       <div>
-        {about && Object.keys(about).length > 0 &&
-          <PageItem>
-            <TextLarge> {"Hey, I'm Isaiah."} </TextLarge>
-          </PageItem>
-        }
         {about && Object.keys(about).length > 0 && this.popExperiences(jobs, skills)}
       </div>
     );

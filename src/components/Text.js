@@ -11,6 +11,11 @@ const TextSmallDiv = styled.p`
   color: white;
   font-size: 13px;
   margin-bottom: 0px;
+  margin-top: 13px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
 `;
 
 const TextFadedDiv = styled.p`
@@ -18,6 +23,10 @@ const TextFadedDiv = styled.p`
   font-size: 13px;
   margin-bottom: 0px;
   margin-top: 2px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
 `;
 
 const TextLinkDiv = styled.a`

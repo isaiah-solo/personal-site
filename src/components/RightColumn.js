@@ -14,7 +14,7 @@ const RightColumnDiv = styled.div`
   width: calc(50% - 450px);
   position: fixed;
   top: 72px;
-  left: calc(50% + 410px);
+  left: calc(50% + 370px);
 
   @media screen and (max-width: 1200px) {
     display: none;

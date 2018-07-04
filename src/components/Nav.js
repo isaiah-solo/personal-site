@@ -28,7 +28,7 @@ const NavMenuDiv = styled.div`
   justify-content: flex-start;
   margin: 0 auto;
   position: relative;
-  width: 740px;
+  width: 700px;
 
   @media screen and (max-width: 1000px) {
     margin: 0px;
