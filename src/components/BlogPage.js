@@ -1,13 +1,7 @@
 import React from 'react';
 import PageItem from '../components/PageItem';
-import styled from 'styled-components';
 
 import { TextLarge, TextSmall } from '../components/Text';
-
-const BlogPageDiv = styled.div`
-  font-family: Verdana;
-  line-height: 21px;
-`;
 
 export default class BlogPage extends React.Component {
   state = {
@@ -26,8 +20,9 @@ export default class BlogPage extends React.Component {
     ]
   }
 
-  popPosts = (posts = []) => {
-    const postList = posts.map(({body, title}, index) => {
+  render() {
+    const {posts} = this.state;
+    const postDivs = posts.map(({body, title}, index) => {
       const content = body.map(({text}, index) =>
         <TextSmall key={index}> {text} </TextSmall>
       );
@@ -40,13 +35,7 @@ export default class BlogPage extends React.Component {
       );
     });
 
-    return postList;
-  }
-
-  render() {
-    const posts = this.popPosts(this.state.posts);
-
-    return <BlogPageDiv> {posts} </BlogPageDiv>;
+    return <React.Fragment> {postDivs} </React.Fragment>;
   }
 }
 

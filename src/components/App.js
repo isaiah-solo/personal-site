@@ -48,11 +48,11 @@ export default class App extends React.Component {
 
     return (
       <Router>
-        <div>
+        <React.Fragment>
           <RightColumn text={text} icons={icons} />
           <Nav links={navLinks} />
           <Page routes={navRoutes} />
-        </div>
+        </React.Fragment>
       </Router>
     );
   };

@@ -53,13 +53,15 @@ const NavLinkDiv = styled(NavLink)`
 `;
 
 const Nav = ({links}) => {
-  const navLinks = links.map(({label, to}, index) => {
+  const navLinkDivs = links.map(({label, to}, index) => {
     return <NavLinkDiv exact to={to} key={index}> {label} </NavLinkDiv>;
   });
 
   return (
     <NavDiv>
-      <NavMenuDiv> {navLinks} </NavMenuDiv>
+      <NavMenuDiv>
+        {navLinkDivs}
+      </NavMenuDiv>
     </NavDiv>
   );
 };
