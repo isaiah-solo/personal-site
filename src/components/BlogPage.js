@@ -9,20 +9,27 @@ export default class BlogPage extends React.Component {
 
   render() {
     const {posts} = this.state;
-    const postDivs = posts && posts.map(({body, title}, index) => {
-      const content = body.map(({text}, index) =>
-        <TextSmall key={index}> {text} </TextSmall>
-      );
-
+    const postDivs = (posts || []).map(({body, title}, index) => {
       return (
         <PageItem key={index}>
-          <TextLarge> {title} </TextLarge>
-          {content}
+          <TextLarge>
+            {title}
+          </TextLarge>
+          {
+            body.map(({text}, index) =>
+              <TextSmall key={index}>
+                {text}
+              </TextSmall>
+            )
+          }
         </PageItem>
       );
     });
-
-    return <React.Fragment> {postDivs} </React.Fragment>;
+    return (
+      <React.Fragment>
+        {postDivs}
+      </React.Fragment>
+    );
   }
 }
 

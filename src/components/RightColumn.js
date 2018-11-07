@@ -26,19 +26,24 @@ const RightColumnDiv = styled.div`
 `;
 
 const RightColumn = ({icons, text}) => {
-  const iconDivs = icons && icons.map(({name, website}, index) => (
+  const iconDivs = (icons || []).map(({name, website}, index) => (
     <Icon key={index} name={name} link={website} />
   ));
-  const groupDiv = iconDivs && <Group> {iconDivs} </Group>;
-  const contentDivs = text.map(phrase => (
-    <TextLarge key={phrase}> {phrase} </TextLarge>
-  ));
-
   return (
     <RightColumnDiv>
       <Image src={handle} alt={"Profile Picture"} />
-      {contentDivs}
-      {groupDiv}
+      {
+        text.map(phrase => (
+          <TextLarge key={phrase}>
+            {phrase}
+          </TextLarge>
+        ))
+      }
+      {iconDivs &&
+        <Group>
+          {iconDivs}
+        </Group>
+      }
     </RightColumnDiv>
   );
 };

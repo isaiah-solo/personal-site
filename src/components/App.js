@@ -10,42 +10,71 @@ import NotFoundPage from '../components/NotFoundPage';
 import Nav from '../components/Nav';
 import Page from '../components/Page';
 
-export default class App extends React.Component {
+const navLinks = [
+  {
+    to: '/',
+    label: 'home'
+  },
+  {
+    to: '/blog',
+    label: 'blog'
+  }
+];
+
+const navRoutes = {
+  pages: [
+    {
+      path: '/',
+      component: HomePage
+    },
+    {
+      path: '/blog',
+      component: BlogPage
+    }
+  ],
+  notFound: {
+    path: '*',
+    component: NotFoundPage
+  }
+};
+
+class App extends React.Component {
   state = {
     profile: {},
   }
 
   componentDidMount = () => {
-    fetch('/api/static/profile', {headers: {'Content-Type': 'application/json'}})
-        .then(res => {
-          if (!res.ok) {
-            throw Error(res.statusText);
-          }
-          return res.json();
-        })
-        .then(profile => this.setState(profile))
-        .catch(error => console.log(error));
+    fetch(
+      '/api/static/profile',
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+      .then(res => {
+        if (!res.ok) {
+          throw Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then(
+        profile => this.setState(profile)
+      )
+      .catch(
+        error => console.log(error)
+      );
   };
 
   render = () => {
-    const navLinks = [
-      {to: '/', label: 'home'},
-      {to: '/blog', label: 'blog'}
-    ];
-    const navRoutes = {
-      pages: [
-        {path: '/', component: HomePage},
-        {path: '/blog', component: BlogPage}
-      ],
-      notFound: {path: '*', component: NotFoundPage}
-    };
-
     const {headline, icons, name} = this.state.profile;
     const text = [];
-
-    if (name) text.push(name);
-    if (headline) text.push(headline);
-
+    if (name) {
+      text.push(name);
+    }
+    if (headline) {
+      text.push(headline);
+    }
     return (
       <Router>
         <React.Fragment>
@@ -57,4 +86,6 @@ export default class App extends React.Component {
     );
   };
 }
+
+export default App;
 

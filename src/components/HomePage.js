@@ -14,34 +14,38 @@ export default class HomePage extends React.Component {
 
   componentDidMount = () => {
     fetch('/api/static/about', {headers: {'Content-Type': 'application/json'}})
-        .then(res => {
+      .then(
+        res => {
           if (!res.ok) throw Error(res.statusText);
           return res.json();
-        })
-        .then(about => this.setState(about))
-        .catch(error => console.log(error));
+        }
+      )
+      .then(
+        about => this.setState(about)
+      )
+      .catch(
+        error => console.log(error)
+      );
   }
 
   render = () => {
     const {about} = this.state;
     const {jobs, skills: masterSkills} = about;
-
-    const jobDivs = jobs && jobs.map((job, index) => {
+    const jobDivs = (jobs || []).map((job, index) => {
       const {company, details, endDate, position, skills, startDate, website} = job;
       const dateLengthString = dateLengthToString(startDate, endDate);
       const startDateString = dateToString(startDate);
-      const endDateString = endDate ? dateToString(endDate) : "Present";
-
-      const filteredSkills = skills.map((skill) =>
-        masterSkills.find((entry) => skill === entry.name)
-      );
-      const detailDivs = details && details.map((detail, index) =>
-        <TextSmall key={index}> {detail} </TextSmall>
-      );
-      const pillDivs = filteredSkills && filteredSkills.map(({label, link}, index) =>
-        <Pill key={index} link={link}> {label} </Pill>
-      );
-
+      const endDateString = endDate ? dateToString(endDate) : 'Present';
+      const pillDivs = skills.map((skill) => {
+        const {label, link} = masterSkills.find(
+          (entry) => skill === entry.name
+        );
+        return (
+          <Pill key={index} link={link}>
+            {label}
+          </Pill>
+        );
+      });
       return (
         <PageItem key={company + startDateString}>
           <TextLarge>
@@ -50,12 +54,21 @@ export default class HomePage extends React.Component {
           <TextFaded>
             {`${dateLengthString}, ${startDateString} - ${endDateString}`}
           </TextFaded>
-          {detailDivs}
-          {pillDivs.length > 0 && <Group> {pillDivs} </Group>}
+          {
+            (details || []).map((detail, index) => (
+              <TextSmall key={index}>
+                {detail}
+              </TextSmall>
+            ))
+          }
+          {pillDivs.length > 0 &&
+            <Group>
+              {pillDivs}
+            </Group>
+          }
         </PageItem>
       );
     });
-
     return (
       <React.Fragment>
         {about && jobDivs}

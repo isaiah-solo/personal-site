@@ -19,15 +19,17 @@ const PageDiv = styled.div`
 const Page = ({routes}) => {
   const {notFound, pages} = routes;
   const allRoutes = [...pages, notFound];
-  const pageRoutes = allRoutes.map(({component, path}, index) => {
-    const componentProp = index < allRoutes.length ? {component} : {render: component}; 
-    return <Route exact path={path} {...componentProp} key={index} />;
-  });
-
   return (
     <PageDiv>
       <Switch>
-        {pageRoutes}
+        {
+          allRoutes.map(
+            ({component, path}, index) => {
+              const componentProp = index < allRoutes.length ? {component} : {render: component}; 
+              return <Route exact path={path} {...componentProp} key={index} />;
+            }
+          )
+        }
       </Switch>
     </PageDiv>
   );

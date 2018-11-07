@@ -7,7 +7,7 @@ import { TextLarge } from '../components/Text';
 const NotFoundPage = props => (
   <PageItem>
     <TextLarge>
-      {"Sorry! What you are looking for cannot be found. Maybe try again soon?"}
+      {'Sorry! What you are looking for cannot be found. Maybe try again soon?'}
     </TextLarge>
   </PageItem>
 );
