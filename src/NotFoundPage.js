@@ -1,8 +1,7 @@
 import React from 'react';
 
-import PageItem from '../components/PageItem';
-
-import { TextLarge } from '../components/Text';
+import PageItem from './components/PageItem';
+import { TextLarge } from './components/Text';
 
 const NotFoundPage = props => (
   <PageItem>

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
-import Group from '../components/Group';
-import PageItem from '../components/PageItem';
-import Pill from '../components/Pill';
+import Group from './components/Group';
+import PageItem from './components/PageItem';
+import Pill from './components/Pill';
+import {TextFaded, TextLarge, TextLink, TextSmall} from './components/Text';
 
-import {TextFaded, TextLarge, TextLink, TextSmall} from '../components/Text';
-import {dateLengthToString, dateToString} from '../utils/DateUtil';
+import {dateLengthToString, dateToString} from './utils/DateUtil';
 
 const HomePage = () => {
   const [about, setAbout] = useState({});

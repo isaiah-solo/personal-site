@@ -1,7 +1,7 @@
 import React from 'react';
-import PageItem from '../components/PageItem';
 
-import { TextLarge, TextSmall } from '../components/Text';
+import PageItem from './components/PageItem';
+import { TextLarge, TextSmall } from './components/Text';
 
 const BlogPage = () => {
   const posts = [];

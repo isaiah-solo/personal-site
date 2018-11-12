@@ -1,14 +1,23 @@
 import React, {useEffect, useState} from 'react';
+import {Route, Switch, BrowserRouter as Router} from 'react-router-dom'
+import styled from 'styled-components';
 
-import { BrowserRouter as Router } from 'react-router-dom'
+import BlogPage from './BlogPage';
+import HomePage from './HomePage';
+import NotFoundPage from './NotFoundPage';
 
-import RightColumn from '../components/RightColumn';
-import BlogPage from '../components/BlogPage';
-import HomePage from '../components/HomePage';
-import NotFoundPage from '../components/NotFoundPage';
+import Nav from './components/Nav';
+import RightColumn from './components/RightColumn';
 
-import Nav from '../components/Nav';
-import Page from '../components/Page';
+const PageDiv = styled.div`
+  display: block;
+  padding: 52px 0px 20px 0px;
+  width: auto;
+
+  @media screen and (max-width: 1000px) {
+    padding: 52px 0px 0px 0px;
+  }
+`;
 
 const navLinks = [
   {
@@ -61,12 +70,23 @@ const App = () => {
   }, []);
 
   const {headline, icons, name} = profile;
+  const {notFound, pages} = navRoutes;
+  const allRoutes = [...pages, notFound];
   return (
     <Router>
       <React.Fragment>
         <RightColumn text={[name, headline]} icons={icons} />
         <Nav links={navLinks} />
-        <Page routes={navRoutes} />
+        <PageDiv>
+          <Switch>
+            {allRoutes.map(
+              ({component, path}, index) => {
+                const componentProp = index < allRoutes.length ? {component} : {render: component};
+                return <Route exact path={path} {...componentProp} key={index} />;
+              }
+            )}
+          </Switch>
+        </PageDiv>
       </React.Fragment>
     </Router>
   );
