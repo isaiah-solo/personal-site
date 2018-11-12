@@ -30,22 +30,16 @@ const navLinks = [
   }
 ];
 
-const navRoutes = {
-  pages: [
-    {
-      path: '/',
-      component: HomePage
-    },
-    {
-      path: '/blog',
-      component: BlogPage
-    }
-  ],
-  notFound: {
-    path: '*',
-    component: NotFoundPage
+const pages = [
+  {
+    path: '/',
+    component: HomePage
+  },
+  {
+    path: '/blog',
+    component: BlogPage
   }
-};
+];
 
 const App = () => {
   const [profile, setProfile] = useState({});
@@ -70,8 +64,6 @@ const App = () => {
   }, []);
 
   const {headline, icons, name} = profile;
-  const {notFound, pages} = navRoutes;
-  const allRoutes = [...pages, notFound];
   return (
     <Router>
       <React.Fragment>
@@ -79,12 +71,12 @@ const App = () => {
         <Nav links={navLinks} />
         <PageDiv>
           <Switch>
-            {allRoutes.map(
-              ({component, path}, index) => {
-                const componentProp = index < allRoutes.length ? {component} : {render: component};
-                return <Route exact path={path} {...componentProp} key={index} />;
-              }
+            {pages.map(
+              ({component, path}, index) => (
+                <Route exact path={path} component={component} key={index} />
+              )
             )}
+            <Route exact path="*" render={NotFoundPage}/>;
           </Switch>
         </PageDiv>
       </React.Fragment>

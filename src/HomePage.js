@@ -25,10 +25,10 @@ const HomePage = () => {
     const {company, details, endDate, position, skills, startDate, website} = job;
     const dateLengthString = dateLengthToString(startDate, endDate);
     const startDateString = dateToString(startDate);
-    const endDateString = endDate ? dateToString(endDate) : 'Present';
+    const endDateString = endDate !== null ? dateToString(endDate) : 'Present';
     const pillDivs = skills.map((skill, index) => {
       const {label, link} = masterSkills.find(
-        (entry) => skill === entry.name
+        ({name}) => skill === name
       );
       return (
         <Pill key={index} link={link}>
@@ -59,7 +59,7 @@ const HomePage = () => {
   });
   return (
     <React.Fragment>
-      {about && jobDivs}
+      {about !== null && jobDivs}
     </React.Fragment>
   );
 }
