@@ -33,8 +33,8 @@ const RightColumn = ({icons, text}) => {
     <RightColumnDiv>
       <Image src={handle} alt={"Profile Picture"} />
       {
-        text.map(phrase => (
-          <TextLarge key={phrase}>
+        text.map((phrase, index) => (
+          <TextLarge key={index}>
             {phrase}
           </TextLarge>
         ))
@@ -49,3 +49,4 @@ const RightColumn = ({icons, text}) => {
 };
 
 export default RightColumn;
+

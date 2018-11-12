@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { BrowserRouter as Router } from 'react-router-dom'
 
@@ -38,12 +38,10 @@ const navRoutes = {
   }
 };
 
-class App extends React.Component {
-  state = {
-    profile: {},
-  }
+const App = () => {
+  const [profile, setProfile] = useState({});
 
-  componentDidMount = () => {
+  useEffect(async () => {
     fetch(
       '/api/static/profile',
       {
@@ -58,34 +56,21 @@ class App extends React.Component {
         }
         return res.json();
       })
-      .then(
-        profile => this.setState(profile)
-      )
-      .catch(
-        error => console.log(error)
-      );
-  };
+      .then(({profile}) => setProfile(profile))
+      .catch(error => console.log(error));
+  }, []);
 
-  render = () => {
-    const {headline, icons, name} = this.state.profile;
-    const text = [];
-    if (name) {
-      text.push(name);
-    }
-    if (headline) {
-      text.push(headline);
-    }
-    return (
-      <Router>
-        <React.Fragment>
-          <RightColumn text={text} icons={icons} />
-          <Nav links={navLinks} />
-          <Page routes={navRoutes} />
-        </React.Fragment>
-      </Router>
-    );
-  };
-}
+  const {headline, icons, name} = profile;
+  return (
+    <Router>
+      <React.Fragment>
+        <RightColumn text={[name, headline]} icons={icons} />
+        <Nav links={navLinks} />
+        <Page routes={navRoutes} />
+      </React.Fragment>
+    </Router>
+  );
+};
 
 export default App;
 

@@ -22,14 +22,12 @@ const Page = ({routes}) => {
   return (
     <PageDiv>
       <Switch>
-        {
-          allRoutes.map(
-            ({component, path}, index) => {
-              const componentProp = index < allRoutes.length ? {component} : {render: component}; 
-              return <Route exact path={path} {...componentProp} key={index} />;
-            }
-          )
-        }
+        {allRoutes.map(
+          ({component, path}, index) => {
+            const componentProp = index < allRoutes.length ? {component} : {render: component}; 
+            return <Route exact path={path} {...componentProp} key={index} />;
+          }
+        )}
       </Switch>
     </PageDiv>
   );

@@ -52,24 +52,16 @@ const NavLinkDiv = styled(NavLink)`
 }
 `;
 
-const Nav = ({links}) => {
-  return (
-    <NavDiv>
-      <NavMenuDiv>
-        {
-          links.map(
-            ({label, to}, index) => {
-              return (
-                <NavLinkDiv exact to={to} key={index}>
-                  {label}
-                </NavLinkDiv>
-              );
-            }
-          )
-        }
-      </NavMenuDiv>
-    </NavDiv>
-  );
-};
+const Nav = ({links}) => (
+  <NavDiv>
+    <NavMenuDiv>
+      {links.map(({label, to}, index) => (
+        <NavLinkDiv exact to={to} key={index}>
+          {label}
+        </NavLinkDiv>
+      ))}
+    </NavMenuDiv>
+  </NavDiv>
+);
 
 export default Nav;
