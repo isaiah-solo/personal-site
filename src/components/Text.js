@@ -38,21 +38,33 @@ const TextLinkDiv = styled.a`
   }
 `;
 
-export const TextSmall = ({children}) => <TextSmallDiv> {children} </TextSmallDiv>;
+export const TextSmall = ({children}) => (
+  <TextSmallDiv>
+    {children}
+  </TextSmallDiv>
+);
 
-export const TextLarge = ({children}) => <TextLargeDiv> {children} </TextLargeDiv>;
+export const TextLarge = ({children}) => (
+  <TextLargeDiv>
+    {children}
+  </TextLargeDiv>
+);
 
-export const TextFaded = ({children}) => <TextFadedDiv> {children} </TextFadedDiv>;
+export const TextFaded = ({children}) => (
+  <TextFadedDiv>
+    {children}
+  </TextFadedDiv>
+);
 
 export const TextLink = ({children, link}) => (
-  <TextLinkDiv href={link} target={'_blank'} rel={'noopener'}>
+  <TextLinkDiv href={link} target="_blank" rel="noopener">
     {children}
   </TextLinkDiv>
 );
 
 export class TextTyping extends React.Component {
   state = {
-    text: "",
+    text: '',
   }
 
   constructor(props) {
@@ -65,7 +77,9 @@ export class TextTyping extends React.Component {
     `;
 
     this.Cursor = () => (
-      <this.CursorChar>{'_'}</this.CursorChar>
+      <this.CursorChar>
+        {'_'}
+      </this.CursorChar>
     );
   }
 
@@ -82,11 +96,11 @@ export class TextTyping extends React.Component {
   updateLetter = newText => {
     return new Promise(resolve => {
       this.timeouts.push(
-        setTimeout(() => {
+        setTimeout(() => (
           this.setState({text: newText}, () => {
             resolve(newText);
-          });
-        }, this.props.typeSpeed || 40)
+          })
+        ), this.props.typeSpeed || 40)
       );
     });
   }
@@ -95,54 +109,52 @@ export class TextTyping extends React.Component {
     return new Promise(resolve => {
       let current = 0;
       let isBackspacing = false;
-
       const next = (base = this.state.text) => {
         if (!isBackspacing && current < sentence.length) {
           const letter = sentence[current++];
           this.updateLetter(base + letter).then(next);
-        }
-
-        else if (base.length > 0) {
-          const backspacedBase = base.slice(0, base.length - 1);
+        } else if (base.length > 0) {
           this.timeouts.push(
             setTimeout(() => {
               isBackspacing = true;
-              this.updateLetter(backspacedBase).then(next);
+              this.updateLetter(
+                base.slice(0, base.length - 1)
+              ).then(next);
             }, isBackspacing ? 0 : (this.props.pauseTime || 1200))
           );
-        }
-
-        else {
+        } else {
           resolve();
         }
       };
-
-      if (sentence) next();
+      if (sentence) {
+        next();
+      }
     });
   }
 
   typeSentences = () => {
-    const phrases = this.props.toType || [];
-    const loop = this.props.loop;
-
+    const {loop, toType} = this.props;
+    const phrases = toType || [];
     let current = 0;
     const next = async () => {
       if (loop && current >= phrases.length) {
         current %= phrases.length;
-      }
-
-      else if (!loop && current >= phrases.length) {
+      } else if (!loop && current >= phrases.length) {
         return;
       }
-
-      this.typeSentence(phrases[current++]).then(() => {
+      this.typeSentence(phrases[current++]).then(() => (
         this.timeouts.push(setTimeout(next, 100))
-      });
+      ));
     };
-
-    if (phrases.length > 0) next();
+    if (phrases.length > 0) {
+      next();
+    }
   }
 
-  render = () => <span> {this.state.text}<this.Cursor /> </span>;
+  render = () => (
+    <span>
+      {this.state.text}<this.Cursor />
+    </span>
+  )
 }
 

@@ -14,10 +14,10 @@ export function dateLengthToString(startDate, endDate) {
   const yearsAgo = endDateObj.diff(startDateObj, 'years');
   const monthsAgo = (1 + endDateObj.diff(startDateObj, 'months')) % 12;
 
-  const yearsAgoString = yearsAgo > 0 ? yearsAgo.toString() + " year" + (yearsAgo > 1 ? "s" : "") : "";
-  const monthsAgoString = monthsAgo > 0 ? monthsAgo.toString() + " month" + (monthsAgo > 1 ? "s" : "") : "";
+  const yearsAgoString = yearsAgo > 0 ? yearsAgo.toString() + ' year' + (yearsAgo > 1 ? 's' : '') : '';
+  const monthsAgoString = monthsAgo > 0 ? monthsAgo.toString() + ' month' + (monthsAgo > 1 ? 's' : '') : '';
 
-  const dateString = yearsAgoString + (yearsAgo > 0 && monthsAgo > 0 ? " " : "") + monthsAgoString;
+  const dateString = yearsAgoString + (yearsAgo > 0 && monthsAgo > 0 ? ' ' : '') + monthsAgoString;
 
   return dateString;
 }
