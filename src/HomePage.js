@@ -20,22 +20,17 @@ const HomePage = () => {
       .catch(error => console.log(error));
   }, [])
 
-  const {jobs, skills: masterSkills} = about;
+  const {jobs} = about;
   const jobDivs = (jobs || []).map((job, index) => {
     const {company, details, endDate, position, skills, startDate, website} = job;
     const dateLengthString = dateLengthToString(startDate, endDate);
     const startDateString = dateToString(startDate);
     const endDateString = endDate !== null ? dateToString(endDate) : 'Present';
-    const pillDivs = skills.map((skill, index) => {
-      const {label, link} = masterSkills.find(
-        ({name}) => skill === name
-      );
-      return (
-        <Pill key={index} link={link}>
-          {label}
-        </Pill>
-      );
-    });
+    const pillDivs = skills.map(({label, link}, index) => (
+      <Pill key={index} link={link}>
+        {label}
+      </Pill>
+    ));
     return (
       <PageItem key={company + startDateString}>
         <TextLarge>
