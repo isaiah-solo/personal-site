@@ -26,16 +26,11 @@ const HomePage = () => {
     const dateLengthString = dateLengthToString(startDate, endDate);
     const startDateString = dateToString(startDate);
     const endDateString = endDate !== null ? dateToString(endDate) : 'Present';
-    const pillDivs = skills.map((skill, index) => {
-      const {label, link} = masterSkills.find(
-        ({name}) => skill === name
-      );
-      return (
-        <Pill key={index} link={link}>
-          {label}
-        </Pill>
-      );
-    });
+    const pillDivs = skills.map(({label, link}, index) => (
+      <Pill key={index} link={link}>
+        {label}
+      </Pill>
+    ));
     return (
       <PageItem key={company + startDateString}>
         <TextLarge>
