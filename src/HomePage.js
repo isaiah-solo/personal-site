@@ -20,7 +20,7 @@ const HomePage = () => {
       .catch(error => console.log(error));
   }, [])
 
-  const {jobs, skills: masterSkills} = about;
+  const {jobs} = about;
   const jobDivs = (jobs || []).map((job, index) => {
     const {company, details, endDate, position, skills, startDate, website} = job;
     const dateLengthString = dateLengthToString(startDate, endDate);
